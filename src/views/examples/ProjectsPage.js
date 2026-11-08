@@ -19,7 +19,6 @@ const FILTERS = [
     { key: "all", label: "All Categories", heading: "My Projects" },
     { key: "web", label: "Web", heading: "My Web Projects" },
     { key: "mobile", label: "Mobile", heading: "My Mobile Projects" },
-    { key: "ml", label: "ML & Data Science", heading: "My ML & Data Science Projects" },
 ];
 
 // A project card that fades in the first time it scrolls into view.
