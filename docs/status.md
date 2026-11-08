@@ -1,6 +1,6 @@
 # Status (rolling, max 60 lines; orchestrator rewrites after every stage)
 
-Updated: 2026-11-07 · Mode: autopilot · Phase: Gate A approved, ready for /autopilot
+Updated: 2026-11-08 · Mode: autopilot · Phase: P1 (T-001, T-002 done; T-003, T-004 running)
 
 ## Decisions made
 - Repo re-initialised locally (master + revamp @ baseline c9965c2). No remote configured yet.
@@ -9,7 +9,7 @@ Updated: 2026-11-07 · Mode: autopilot · Phase: Gate A approved, ready for /aut
 - Style defaulted (slate + teal, Inter / IBM Plex Sans, light default + dark).
 
 ## Human actions pending
-- Gate A approved. Origin added by human (no push without approval).
+- Gate A approved. Origin: github.com/arnavk2319/professional-portfolio-app (revamp pushed; PRs auto-merge into revamp).
 - Fix `.claude/kit.json` verify: add `--passWithNoTests` (protected path).
 - Remote: user gave https://github.com/arnavk2319/professional-portfolio-app; `git remote add` was blocked by the permission classifier, not added.
 - Later (human-only paths): `.env.example`, remove `.github/workflows/main.yml`.

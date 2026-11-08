@@ -16,8 +16,8 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 
 | Ticket | Phase | Title | Size | Depends on | Status |
 | ------ | ----- | ----- | ---- | ---------- | ------ |
-| T-001 | P1 | Data modules from resume | M | - | approved |
-| T-002 | P1 | Remove Arnav-only features and routes | M | - | approved |
+| T-001 | P1 | Data modules from resume | M | - | done |
+| T-002 | P1 | Remove Arnav-only features and routes | M | - | done |
 | T-003 | P1 | Config and branding swap (needs_architect) | M | - | approved |
 | T-004 | P1 | Analytics from env, guarded | S | - | approved |
 | T-005 | P2 | Home: summary, KPI tiles, resume download | M | T-001, T-002, T-003 | approved |
