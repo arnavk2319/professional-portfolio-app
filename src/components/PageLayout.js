@@ -70,7 +70,7 @@ export const PageLayout = ({ title, currentHref, currentLabel, children }) => {
 
                                         <div className="container-fluid">
                                             <footer>
-                                                <div>© {new Date().getFullYear()} Arnav Kaushal</div>
+                                                <div>© {new Date().getFullYear()} Sakshi</div>
                                                 <a href="#." className="art-to-top" onClick={scrollToTop} aria-label="Scroll to top">
                                                     <i className="fas fa-chevron-up"></i> Back to top
                                                 </a>

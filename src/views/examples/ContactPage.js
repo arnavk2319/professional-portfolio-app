@@ -67,7 +67,7 @@ function ContactPage(){
     ];
 
     return(
-        <PageLayout title="Contact | Arnav Kaushal" currentHref="/contact-me" currentLabel="Contact">
+        <PageLayout title="Contact | Sakshi" currentHref="/contact-me" currentLabel="Contact">
                     {/*Container fluid section -- 1*/}
                     <div className="container-fluid">
 

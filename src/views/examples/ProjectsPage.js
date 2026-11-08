@@ -69,7 +69,7 @@ function ProjectsPage() {
     const visible = PROJECTS.filter((p) => filter === "all" || p.category === filter);
 
     return (
-        <PageLayout title="Portfolio | Arnav Kaushal" currentHref="/projects" currentLabel="Portfolio">
+        <PageLayout title="Portfolio | Sakshi" currentHref="/projects" currentLabel="Portfolio">
             <div className="container-fluid-projects">
                 <div className="row p-60-0 p-lg-30-0 p-md-15-0">
                     <div className="col-lg-12">

@@ -1,5 +1,5 @@
 {
-  "name": "react-portfolio-web-app",
+  "name": "sakshi-portfolio",
   "version": "1.4.0",
   "private": true,
   "dependencies": {
@@ -12,9 +12,6 @@
     "sass": "^1.90.0"
   },
   "scripts": {
-    "homepage": "https://arnav-kaushal.herokuapp.com/",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build && cp public/_redirects build/_redirects",
     "test": "react-scripts test",
@@ -41,9 +38,6 @@
   },
   "optionalDependencies": {
     "typescript": "3.9.5"
-  },
-  "devDependencies": {
-    "gh-pages": "^3.2.3"
   },
   "engines": {
     "node": "16.20.2"
