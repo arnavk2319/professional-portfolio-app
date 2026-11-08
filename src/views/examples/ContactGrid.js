@@ -1,64 +1,60 @@
 import React from "react";
-import { FaDatabase, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import defaultProfile from "data/profile";
 
-const buttons = [
-  { icon: <FaDatabase size={20} />, label: "Kaggle", link: "https://www.kaggle.com/arnavkaushal/code" },
-  { icon: <FaGithub size={20} />, label: "GitHub", link: "https://github.com/arnavk2319?tab=repositories" },
-  { icon: <FaLinkedin size={20} />, label: "LinkedIn", link: "https://www.linkedin.com/in/arnav-k-7359b3170/" },
-  { icon: <FaEnvelope size={20} />, label: "Email", link: "mailto:arnav.kaushal800@gmail.com" },
-];
+const tileStyle = {
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  padding: "16px",
+  borderRadius: "12px",
+  backgroundColor: "var(--bg-tile)",
+  color: "var(--ink)",
+  textDecoration: "none",
+  boxShadow: "0 2px 6px var(--shadow-30)",
+  fontSize: "14px",
+  fontWeight: "500",
+  flex: "1 1 220px",
+  boxSizing: "border-box",
+  wordBreak: "break-word",
+};
 
-export const ContactGrid = () => {
+// Tiles are built from profile data only. LinkedIn renders only when a URL is set.
+export const ContactGrid = ({ profile = defaultProfile }) => {
+  const tiles = [
+    { key: "email", icon: <FaEnvelope size={20} aria-hidden="true" />, label: "Email", text: profile.email, href: "mailto:" + profile.email },
+    { key: "phone", icon: <FaPhone size={20} aria-hidden="true" />, label: "Phone", text: profile.phone, href: "tel:" + profile.phone.replace(/[^+\d]/g, "") },
+    { key: "location", icon: <FaMapMarkerAlt size={20} aria-hidden="true" />, label: "Location", text: profile.location },
+  ];
+  if (profile.linkedin) {
+    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", text: "LinkedIn profile", href: profile.linkedin, external: true });
+  }
+
   return (
-    <div
-      style={{
-        // Flex + centred wrapping: with an odd number of tiles the last one sits in the middle of its row.
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        gap: "15px",
-        padding: "30px",
-        margin: "0 auto 30px",
-        width: "100%",           // full width container
-        maxWidth: "500px",       // max width so it doesn’t stretch too much
-        backgroundColor: "var(--bg-grid)",
-        borderRadius: "12px",
-        boxSizing: "border-box",
-      }}
+    <ul
+      className="contact-grid"
+      style={{ display: "flex", flexWrap: "wrap", gap: "15px", listStyle: "none", margin: "0 0 30px", padding: 0 }}
     >
-      {buttons.map(({ icon, label, link }, index) => (
-        <a
-          key={index}
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "16px",
-            borderRadius: "12px",
-            backgroundColor: "var(--bg-tile)",
-            color: "var(--ink)",
-            textDecoration: "none",
-            cursor: "pointer",
-            boxShadow: "0 2px 6px var(--shadow-30)",
-            transition: "background-color 0.3s ease",
-            fontSize: "14px",
-            fontWeight: "500",
-            userSelect: "none",
-            flex: "0 1 calc(50% - 8px)",
-            minWidth: "140px",
-            boxSizing: "border-box",
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--bg-tile-hover)")}
-          onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "var(--bg-tile-rest)")}
-        >
-          {icon}
-          <span>{label}</span>
-        </a>
+      {tiles.map(({ key, icon, label, text, href, external }) => (
+        <li key={key} style={{ display: "flex", flex: "1 1 220px" }}>
+          {href ? (
+            <a
+              href={href}
+              style={tileStyle}
+              {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            >
+              {icon}
+              <span><strong>{label}:</strong> {text}</span>
+            </a>
+          ) : (
+            <div style={tileStyle}>
+              {icon}
+              <span><strong>{label}:</strong> {text}</span>
+            </div>
+          )}
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 
