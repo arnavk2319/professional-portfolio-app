@@ -18,3 +18,10 @@ Updated: 2026-11-08 · T-013 lavender theme merged into revamp (PR #15); revamp 
 - Render: static site from `main`, build `npm run build`, publish `build`, env GENERATE_SOURCEMAP=false, add security headers (see audit).
 - After the domain exists: absolute og:image/twitter:image; replace Font Awesome CDN with react-icons.
 - Later: drop location.search from PageTracker page_path; gitignore logs/usage and logs/decisions; plan CRA 3.4.1 -> Vite.
+
+## Budget warning (2026-11-08)
+- Day spend $22.32 of $30 (74%) when T-014 started. T-015 (L, $8) may hit the day cap; resume tomorrow or raise `day_usd` in `.claude/budgets.json` (human-only path).
+
+## In flight
+- P6: T-014 (route error diagnosis, S) running; T-015 editorial scroll layout in lavender light (L) waits for T-014.
+- User chose layout option 2 (Editorial scroll). Dark mode toggle kept, light is the default (assumption, confirm).
