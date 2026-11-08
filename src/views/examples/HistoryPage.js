@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageLayout } from "components/PageLayout";
-import certifications from "data/certifications";
 
 function HistoryPage(){
 
@@ -71,46 +70,6 @@ function HistoryPage(){
 
                                 </div>
 
-                                {certifications.length > 0 && (
-                                    <>
-                                        <div className="art-section-title">
-
-                                            <div className="art-title-frame">
-
-                                                <h4>Certifications</h4>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div className="art-timeline art-gallery">
-
-                                            {certifications.map(({ title, issuer, link, date }) => (
-                                                <div className="art-timeline-item" key={title}>
-                                                    <div className="art-timeline-mark-light"></div>
-                                                    <div className="art-timeline-mark"></div>
-
-                                                    <a href={link} target="_blank" rel="noopener noreferrer" className="art-a art-timeline-content art-cert-tile">
-                                                        <div className="art-card-header">
-                                                            <div className="art-left-side">
-                                                                <h5>{title}</h5>
-                                                                <div className="art-el-suptitle mb-15">{issuer}</div>
-                                                            </div>
-                                                            {date && (
-                                                                <div className="art-right-side">
-                                                                    <span className="art-date">{date}</span>
-                                                                </div>
-                                                            )}
-                                                        </div>
-
-                                                        <p className="art-cert-link">View credential <i className="fas fa-external-link-alt"></i></p>
-                                                    </a>
-                                                </div>
-                                            ))}
-
-                                        </div>
-                                    </>
-                                )}
 
                             </div>
 

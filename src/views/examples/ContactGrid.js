@@ -1,11 +1,9 @@
 import React from "react";
-import { SiCredly } from "react-icons/si";
 import { FaDatabase, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const buttons = [
   { icon: <FaDatabase size={20} />, label: "Kaggle", link: "https://www.kaggle.com/arnavkaushal/code" },
   { icon: <FaGithub size={20} />, label: "GitHub", link: "https://github.com/arnavk2319?tab=repositories" },
-  { icon: <SiCredly size={20} />, label: "Credly", link: "https://www.credly.com/users/arnav-kaushal/badges/credly" },
   { icon: <FaLinkedin size={20} />, label: "LinkedIn", link: "https://www.linkedin.com/in/arnav-k-7359b3170/" },
   { icon: <FaEnvelope size={20} />, label: "Email", link: "mailto:arnav.kaushal800@gmail.com" },
 ];
