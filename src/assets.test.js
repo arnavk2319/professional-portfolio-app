@@ -8,15 +8,20 @@ const SCSS = path.join(SRC, "assets", "scss");
 
 const walk = (dir) =>
   fs.existsSync(dir)
-    ? fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
-        const p = path.join(dir, e.name);
-        return e.isDirectory() ? walk(p) : [p];
-      })
+    ? fs
+        .readdirSync(dir, { withFileTypes: true })
+        .filter((e) => !e.name.startsWith(".") && e.name !== "Thumbs.db")
+        .flatMap((e) => {
+          const p = path.join(dir, e.name);
+          return e.isDirectory() ? walk(p) : [p];
+        })
     : [];
 
 const read = (f) => fs.readFileSync(f, "utf8");
 const srcFiles = walk(SRC);
-const jsFiles = srcFiles.filter((f) => f.endsWith(".js") && !f.endsWith(".test.js"));
+const jsFiles = srcFiles.filter(
+  (f) => f.endsWith(".js") && !f.endsWith(".test.js"),
+);
 const scssFiles = walk(SCSS).filter((f) => f.endsWith(".scss"));
 const indexHtml = read(path.join(PUBLIC, "index.html"));
 const manifest = read(path.join(PUBLIC, "manifest.json"));
@@ -49,7 +54,7 @@ describe("asset hygiene", () => {
   test("dead selectors are absent from scss", () => {
     const css = scssFiles.map(read).join("\n");
     [".art-filter", ".art-tile", ".container-fluid-projects"].forEach((s) =>
-      expect(css).not.toContain(s)
+      expect(css).not.toContain(s),
     );
   });
 
@@ -62,15 +67,18 @@ describe("asset hygiene", () => {
 
   test("imports in src/index.js resolve to existing files", () => {
     const code = read(path.join(SRC, "index.js"));
-    const specs = [...code.matchAll(/^\s*import\s+(?:[^"']*from\s+)?["']([^"']+)["']/gm)].map(
-      (m) => m[1].split("?")[0]
-    );
+    const specs = [
+      ...code.matchAll(/^\s*import\s+(?:[^"']*from\s+)?["']([^"']+)["']/gm),
+    ].map((m) => m[1].split("?")[0]);
     const local = specs.filter(
-      (s) => s.startsWith(".") || s.startsWith("assets/") || fs.existsSync(path.join(SRC, s))
+      (s) =>
+        s.startsWith(".") ||
+        s.startsWith("assets/") ||
+        fs.existsSync(path.join(SRC, s)),
     );
     expect(local.length).toBeGreaterThan(0);
     const missing = local.filter(
-      (s) => !fs.existsSync(path.resolve(s.startsWith(".") ? SRC : SRC, s))
+      (s) => !fs.existsSync(path.resolve(s.startsWith(".") ? SRC : SRC, s)),
     );
     expect(missing).toEqual([]);
   });
