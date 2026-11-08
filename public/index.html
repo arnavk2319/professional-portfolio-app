@@ -41,14 +41,7 @@
         document.write('<meta name="theme-color" content="' + BAR_COLORS[theme] + '">');
       })();
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=%REACT_APP_GA_MEASUREMENT_ID%"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '%REACT_APP_GA_MEASUREMENT_ID%', { send_page_view: false });
-      // set send_page_view: false to manually track pageviews via analytics.js
-    </script>
+    <!-- Google Analytics is injected at runtime by src/analytics.js when REACT_APP_GA_MEASUREMENT_ID is set -->
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-icon.png" />
