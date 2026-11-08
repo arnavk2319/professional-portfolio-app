@@ -17,13 +17,13 @@ Personal portfolio site (React, static, hosted on Render). Full spec: [docs/spec
 
 `/kickoff "<brief>"` -> spec + ADR + phases + tickets -> **GATE A** (one approval) -> `/autopilot` builds every approved
 ticket (implementer -> test-writer -> reviewer -> verify -> PR -> auto-merge into `revamp`) -> **GATE B**
-(human merges `revamp` -> `master` and promotes production). Nothing else needs approval.
+(human merges `revamp` -> `main` and promotes production). Nothing else needs approval.
 Other commands: `/plan` `/build <ticket>` `/review <branch>` `/ship-check` `/status` `/budget` `/log` `/ask` `/uicheck`.
 
 ## Conventions
 
 - One ticket per implementer; branch `t-<id>-<slug>` off `revamp`; PR into `revamp`, `gh pr merge --auto --squash`. Conventional commit titles.
-- Never push to `master`, force push, promote to production, or run schema push/migrate against a non-local DB.
+- Never push to `main`, force push, promote to production, or run schema push/migrate against a non-local DB.
 - Never read `node_modules/`, `.venv/`, `.next/`, lockfiles, `logs/runs/`, `test-results/`.
 - Never edit `.env*`, `secrets/`, `.github/`, `.claude/` (hooks block it). Human-only: describe the change in the ticket.
 - Secrets only via env; every variable documented in `.env.example`. No new dependency without an ADR; pin exact versions.
