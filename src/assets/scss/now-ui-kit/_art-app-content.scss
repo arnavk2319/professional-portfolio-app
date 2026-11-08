@@ -893,29 +893,6 @@ content
   portfolio
   
   ------------------------------ */
-  /* ----- filter ----- */
-  .art-filter {
-    & a {
-      color: var(--muted);
-      margin-bottom: 0;
-      margin-right: 28px;
-      padding: 8px 0;
-      font-size: 14px;
-      letter-spacing: 2px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-  
-      &:hover {
-        color: var(--accent-text);
-      }
-
-      &.art-current {
-        color: var(--accent-text);
-        border-bottom-color: var(--accent-text);
-      }
-    }
-  }
-
   /* ----- link tiles (the whole tile is a link) ----- */
   a.art-cert-tile {
     display: block;
@@ -1046,37 +1023,6 @@ content
       width: 100%;
 
   
-      /* each project is a rounded card; the text is always visible under the image */
-      & .art-tile {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 14px;
-        background: linear-gradient(159deg, rgba(var(--rgb-card-a), 1) 0%, rgba(var(--rgb-card-b), 1) 100%);
-        box-shadow: var(--tile-shadow);
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease-out;
-
-        &.art-in {
-          opacity: 1;
-          transform: none;
-        }
-
-        &:hover {
-          transform: translateY(-4px);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          opacity: 1;
-          transform: none;
-          transition: none;
-        }
-      }
-
       & .art-item-description {
         position: relative;
         padding: 24px 26px 26px;
@@ -1458,16 +1404,6 @@ content
       }
     }
   
-    .art-filter {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-  
-      & a {
-        margin: 0 0 10px;
-        align-self: center;
-      }
-    }
   
     .art-m-hidden {
       display: none;

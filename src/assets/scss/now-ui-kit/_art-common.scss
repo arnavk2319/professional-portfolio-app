@@ -67,11 +67,6 @@ h6 {
   position: relative;
 }
 
-.container-fluid-projects {
-  /* must not be its own scroller: a scroller inside .art-scroll-frame traps touch scrolling on phones */
-  overflow-x: hidden;
-  position: relative;
-}
 /* ----- buttons frame ----- */
 .art-buttons-frame {
   & a {
