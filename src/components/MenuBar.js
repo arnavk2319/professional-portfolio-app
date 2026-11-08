@@ -1,5 +1,26 @@
 import React from "react";
 
+const readTheme = () => document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+
+// Light/dark switch: sets data-theme on <html> and remembers the choice (localStorage, best effort).
+const ThemeToggle = () => {
+    const [theme, setTheme] = React.useState(readTheme);
+    const toggle = () => {
+        const next = theme === "dark" ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", next);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", next === "dark" ? "#0f172a" : "#f8fafc");
+        try { localStorage.setItem("theme", next); } catch (e) { /* storage unavailable */ }
+        setTheme(next);
+    };
+    return (
+        <button type="button" className="art-theme-toggle" onClick={toggle} aria-pressed={theme === "dark"}>
+            <i className={theme === "dark" ? "fas fa-sun" : "fas fa-moon"} aria-hidden="true"></i>
+            <span>{theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}</span>
+        </button>
+    );
+};
+
 const MENU = [
     { href: "/portfolio", label: "Home" },
     { href: "/projects", label: "Projects" },
@@ -28,6 +49,8 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
                         ))}
                     </ul>
                 </nav>
+
+                <ThemeToggle />
 
                 <ul className="art-language-change">
                     <li className="art-active-lang"><a href="#.">EN</a></li>

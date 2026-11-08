@@ -59,7 +59,7 @@ function PortfolioPage(){
 
                     <div className="container-fluid">
                         <h2 className="mb-15">Key metrics</h2>
-                        <ul className="row p-30-0 art-kpi-list" style={{ listStyle: "none", paddingLeft: 0 }}>
+                        <ul className="row p-30-0 art-kpi-list">
                             {metrics.map(({ value, label }) => (
                                 <li className="col-md-4 col-6" key={label}>
                                     <div className="art-counter-frame">

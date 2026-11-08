@@ -19,22 +19,21 @@
 <html lang="en">
   <head>
     <script>
-      // THEME SWITCH. The site has two themes, defined in src/assets/scss/now-ui-kit/_art-theme.scss:
-      //   "ivory"  Ivory & Oxblood (light)
-      //   "dark"   the original dark theme
-      // To roll the whole site back to the dark theme, change DEFAULT_THEME to "dark".
-      // To preview a theme without changing the default, open any page with ?theme=dark or
-      // ?theme=ivory. The choice is kept for the browser tab; ?theme=reset clears it.
-      // This runs before first paint so the page never flashes the wrong theme.
+      // THEME SWITCH. Two themes, defined in src/assets/scss/now-ui-kit/_art-theme.scss:
+      //   "light"  slate + teal (default)
+      //   "dark"   slate + teal, dark
+      // To change the site default, change DEFAULT_THEME. To preview a theme, open any page with
+      // ?theme=dark or ?theme=light (kept in localStorage); ?theme=reset clears it. The switch in
+      // the menu bar also saves to localStorage. This runs before first paint to avoid a flash.
       (function () {
-        var DEFAULT_THEME = "ivory";
-        var BAR_COLORS = { ivory: "#f7f1e6", dark: "#1e1e28" };
+        var DEFAULT_THEME = "light";
+        var BAR_COLORS = { light: "#f8fafc", dark: "#0f172a" };
         var theme = DEFAULT_THEME;
         try {
           var asked = new URLSearchParams(window.location.search).get("theme");
-          if (asked === "reset") sessionStorage.removeItem("theme");
-          else if (BAR_COLORS[asked]) sessionStorage.setItem("theme", asked);
-          var kept = sessionStorage.getItem("theme");
+          if (asked === "reset") localStorage.removeItem("theme");
+          else if (BAR_COLORS[asked]) localStorage.setItem("theme", asked);
+          var kept = localStorage.getItem("theme");
           if (BAR_COLORS[kept]) theme = kept;
         } catch (e) {}
         document.documentElement.setAttribute("data-theme", theme);
@@ -61,8 +60,10 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <!--     Fonts and icons     -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link

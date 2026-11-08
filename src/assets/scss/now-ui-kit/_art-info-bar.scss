@@ -338,7 +338,7 @@ info bar
   
         &:hover {
         //   text-shadow: $text-neon;
-          color: grey;
+          color: var(--accent-text);
         }
       }
     }
