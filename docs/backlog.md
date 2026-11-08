@@ -31,7 +31,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | T-011 | P3 | Performance and asset cleanup | S | T-009 | done |
 | T-012 | P4 | Final fidelity check vs resume | S | T-010, T-011 | done |
 | T-013 | P5 | Lavender theme, light and dark | M | T-009, T-010, T-011 | done |
-| T-014 | P6 | Reproduce and fix Projects, Contact, Education errors | S | T-013 | approved |
+| T-014 | P6 | Reproduce and fix Projects, Contact, Education errors | S | T-013 | done |
 | T-015 | P6 | Editorial scroll layout, lavender light | L | T-014 | approved |
 
 ## Later (not built)
