@@ -20,8 +20,8 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | T-002 | P1 | Remove Arnav-only features and routes | M | - | done |
 | T-003 | P1 | Config and branding swap (needs_architect) | M | - | done |
 | T-004 | P1 | Analytics from env, guarded | S | - | done |
-| T-005 | P2 | Home: summary, KPI tiles, resume download | M | T-001, T-002, T-003 | approved |
-| T-006 | P2 | History: experience, education, skills | M | T-001, T-002 | approved |
+| T-005 | P2 | Home: summary, KPI tiles, resume download | M | T-001, T-002, T-003 | done |
+| T-006 | P2 | History: experience, education, skills | M | T-001, T-002 | done |
 | T-007 | P2 | Projects page | S | T-001, T-002 | approved |
 | T-008 | P2 | Contact page, mailto/tiles, resume | M | T-001, T-002 | approved |
 | T-009 | P3 | Dashboard theme, light/dark | M | T-005..T-008 | approved |

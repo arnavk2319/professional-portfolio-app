@@ -1,6 +1,6 @@
 # Status (rolling, max 60 lines; orchestrator rewrites after every stage)
 
-Updated: 2026-11-08 · Mode: autopilot · Phase: P1 done; P2 starting (T-005, T-006)
+Updated: 2026-11-08 · Mode: autopilot · Phase: P2 (T-005, T-006 done; T-007, T-008 next)
 
 ## Done
 - P1: T-001 data modules (#1), T-002 removals (#2), T-004 analytics guard (#3), T-003 config/branding (#4). All merged into `revamp`.
