@@ -12,7 +12,7 @@ function ContactPage(){
                         <section aria-labelledby="contact-heading">
                             <div className="art-section-title">
                                 <div className="art-title-frame">
-                                    <h4 id="contact-heading">Contact information</h4>
+                                    <h1 id="contact-heading" className="h4">Contact information</h1>
                                 </div>
                             </div>
                             <ContactGrid profile={profile} />

@@ -66,7 +66,7 @@ function PortfolioPage(){
                                         <div className="art-counter-box">
                                             <span className="art-counter">{value}</span>
                                         </div>
-                                        <h6>{label}</h6>
+                                        <span className="art-kpi-label">{label}</span>
                                     </div>
                                 </li>
                             ))}

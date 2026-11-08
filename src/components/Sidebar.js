@@ -40,12 +40,12 @@ export const Sidebar = ({ isActive, onToggle }) => {
     }, [updateMore]);
 
     return (
-    <div className={isActive ? "art-info-bar art-active" : "art-info-bar"}>
+    <header className={isActive ? "art-info-bar art-active" : "art-info-bar"}>
         <div className="art-info-bar-frame">
             <div className="art-info-bar-header">
-                <a className="art-info-bar-btn" onClick={onToggle} href="#.">
-                    <i className="fa fa-ellipsis-v"></i>
-                </a>
+                <button type="button" className="art-info-bar-btn" onClick={onToggle} aria-expanded={!!isActive} aria-label="Toggle profile panel">
+                    <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
+                </button>
             </div>
 
             <a href="/portfolio" className="art-header" aria-label={profile.name + ", home"}>
@@ -60,9 +60,9 @@ export const Sidebar = ({ isActive, onToggle }) => {
                     </div>
                 </div>
 
-                <h5 className="art-name mb-10">
+                <div className="art-name mb-10">
                     <span>{profile.name}</span>
-                </h5>
+                </div>
 
                 <div className="art-sm-text">
                     {profile.title}
@@ -75,7 +75,7 @@ export const Sidebar = ({ isActive, onToggle }) => {
                     <ul>
                         {PROFILE.map(({ label, value }) => (
                             <li key={label}>
-                                <h6>{label}</h6><span>{value}</span>
+                                <span className="art-table-label">{label}</span><span>{value}</span>
                             </li>
                         ))}
                     </ul>
@@ -97,16 +97,16 @@ export const Sidebar = ({ isActive, onToggle }) => {
 
                 <div className={moreBelow ? "art-scroll-hint art-show" : "art-scroll-hint"} aria-hidden="true">
                     <span>Scroll</span>
-                    <i className="fas fa-chevron-down"></i>
+                    <i className="fas fa-chevron-down" aria-hidden="true"></i>
                 </div>
             </div>
 
             <div className="art-ls-social">
                 {SOCIAL.map(({ href, icon, label }) => (
-                    <a key={href} href={href} aria-label={label} target="_blank" rel="noopener noreferrer"><i className={icon}></i></a>
+                    <a key={href} href={href} aria-label={label} {...(href.startsWith("mailto:") ? {} : { target: "_blank", rel: "noopener noreferrer" })}><i className={icon} aria-hidden="true"></i></a>
                 ))}
             </div>
         </div>
-    </div>
+    </header>
 );
 };

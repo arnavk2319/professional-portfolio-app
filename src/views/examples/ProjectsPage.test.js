@@ -30,7 +30,7 @@ describe('ProjectsPage render', () => {
     test('renders exactly 2 cards with names and roles from data', () => {
         const cards = container.querySelectorAll('article');
         expect(cards.length).toBe(2);
-        expect(Array.from(cards).map((c) => c.querySelector('h3').textContent))
+        expect(Array.from(cards).map((c) => c.querySelector('h2').textContent))
             .toEqual(projects.map((p) => p.name));
         expect(Array.from(cards).map((c) => c.textContent)).toEqual([
             expect.stringContaining('Analyst'),

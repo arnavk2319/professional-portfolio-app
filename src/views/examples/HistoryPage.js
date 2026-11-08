@@ -15,6 +15,7 @@ const SectionTitle = ({ id, children }) => (
 function HistoryPage(){
     return(
         <PageLayout title="History | Sakshi" currentHref="/history" currentLabel="History">
+            <h1 className="art-sr-only">History: education, skills and work experience</h1>
             <div className="container-fluid">
                 <div className="row p-60-0 p-lg-30-0 p-md-15-0">
 
