@@ -24,7 +24,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | T-006 | P2 | History: experience, education, skills | M | T-001, T-002 | done |
 | T-007 | P2 | Projects page | S | T-001, T-002 | done |
 | T-008 | P2 | Contact page, mailto/tiles, resume | M | T-001, T-002 | done |
-| T-009 | P3 | Dashboard theme, light/dark | M | T-005..T-008 | approved |
+| T-009 | P3 | Dashboard theme, light/dark | M | T-005..T-008 | done |
 | T-010 | P3 | Accessibility and responsive pass | M | T-009 | approved |
 | T-011 | P3 | Performance and asset cleanup | S | T-009 | approved |
 | T-012 | P4 | Final fidelity check vs resume | S | T-010, T-011 | approved |
