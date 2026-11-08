@@ -48,11 +48,11 @@ describe("resume data modules", () => {
         });
     });
 
-    test("profile contact details exact, LinkedIn empty", () => {
+    test("profile contact details exact, LinkedIn is the resume link", () => {
         expect(profile.email).toBe("sakshi1999lohia@gmail.com");
         expect(profile.phone).toBe("+1 (437) 673-8835");
-        expect(LINKEDIN_URL).toBe("");
-        expect(profile.linkedin).toBe("");
+        expect(LINKEDIN_URL).toBe("https://www.linkedin.com/in/sakshi-sakshi-32b510215/");
+        expect(profile.linkedin).toBe(LINKEDIN_URL);
     });
 
     test("education and projects key strings", () => {

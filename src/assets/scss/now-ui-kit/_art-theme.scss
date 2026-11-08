@@ -10,7 +10,7 @@ Two themes, chosen by the data-theme attribute on <html>:
 
 The attribute is set before first paint by the script in public/index.html, which is
 also where DEFAULT_THEME is chosen. Preview with ?theme=dark or ?theme=light
-(?theme=reset clears the saved choice). The switch button in the menu bar saves the
+(?theme=reset clears the saved choice). The fixed switch button saves the
 choice in localStorage.
 
 Contrast (WCAG AA, checked): see docs/tickets/T-013.md Findings.
@@ -19,8 +19,9 @@ Contrast (WCAG AA, checked): see docs/tickets/T-013.md Findings.
 :root,
 :root[data-theme="light"] {
   color-scheme: light;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-head: "IBM Plex Sans", "Inter", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-head: "Fraunces", Georgia, serif;
+  --font-data: "DM Mono", ui-monospace, Menlo, monospace;
   --bg-deep: #f6f2ff;
   --bg-page: #f6f2ff;
   --bg-panel: #ede7fb;
@@ -132,36 +133,6 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* KPI tiles (home page) */
-.art-kpi-list {
-  list-style: none;
-  padding-left: 0;
-
-  & .art-counter-frame {
-    flex-direction: column;
-    align-items: flex-start;
-    height: calc(100% - 30px);
-    padding: 18px 20px;
-    border-radius: 12px;
-    background: var(--bg-card-a);
-    border: 1px solid var(--card-border);
-    box-shadow: var(--tile-shadow);
-
-    & .art-counter-box .art-counter {
-      font-family: var(--font-head);
-      font-size: 28px;
-      font-weight: 700;
-    }
-
-    & h6 {
-      color: var(--muted);
-      font-weight: 500;
-      font-size: 12px;
-      margin-top: 4px;
-    }
-  }
-}
-
 /* Contact tiles */
 .contact-grid {
   display: flex;
@@ -263,57 +234,3 @@ a.contact-tile:hover {
   }
 }
 main:focus { outline: none; }
-
-/* sidebar sub-labels that used to be headings */
-.art-table-label {
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--ink);
-}
-.art-kpi-list .art-counter-frame .art-kpi-label {
-  display: block;
-  color: var(--muted);
-  font-weight: 500;
-  font-size: 12px;
-  margin-top: 4px;
-}
-.art-info-bar .art-name {
-  font-family: var(--font-head);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* Menu items of a collapsed (off-screen) panel must not be reachable by keyboard.
-   visibility flips after the slide transition when closing, immediately when opening. */
-.art-menu-bar .art-scroll-frame-menu-sidebar {
-  visibility: hidden;
-  transition: visibility 0s linear 0.55s;
-}
-.art-menu-bar.art-active .art-scroll-frame-menu-sidebar {
-  visibility: visible;
-  transition-delay: 0s;
-}
-@media (max-width: 920px) {
-  .art-info-bar:not(.art-active) .art-header,
-  .art-info-bar:not(.art-active) .art-scroll-frame-profile-sidebar,
-  .art-info-bar:not(.art-active) .art-ls-social {
-    visibility: hidden;
-    transition: visibility 0s linear 0.55s;
-  }
-}
-
-/* keep the fixed theme toggle from covering the footer / last content */
-.art-scroll-frame .scroll-content {
-  padding-bottom: 72px !important;
-}
-
-/* panel toggles are real <button>s: neutralise native button chrome */
-button.art-info-bar-btn,
-button.art-menu-bar-btn {
-  background: none;
-  border: 0;
-  font: inherit;
-  line-height: inherit;
-  color: var(--accent);
-  cursor: pointer;
-}

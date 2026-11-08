@@ -3,6 +3,7 @@ const projects = [
     {
         name: "VIP Tires and Services — Retail Market Analysis",
         role: "Analyst",
+        link: "", // the resume gives no URL: the page shows a muted "Add link" placeholder
         bullets: [
             "Analysed retail sales and market data using Excel, R, and Power BI to optimize sales distribution strategy, contributing to a 15% increase in sales performance.",
         ],
@@ -10,6 +11,7 @@ const projects = [
     {
         name: "Yonge Street Mission Program Analysis",
         role: "Team Lead",
+        link: "", // the resume gives no URL: the page shows a muted "Add link" placeholder
         bullets: [
             "Led a cross-functional team to build a Power BI analytical model for program decision-making and resource allocation, improving operational efficiency by 30% and presenting recommendations directly to the client.",
         ],

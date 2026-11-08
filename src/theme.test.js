@@ -4,9 +4,8 @@ import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import fs from "fs";
 import path from "path";
-import { MenuBar } from "components/MenuBar";
-import PortfolioPage from "views/examples/PortfolioPage";
-import ContactPage from "views/examples/ContactPage";
+import { ThemeToggle } from "components/ThemeToggle";
+import HomePage from "views/HomePage";
 
 const root = path.resolve(__dirname, "..");
 const read = (p) => fs.readFileSync(path.join(root, p), "utf8");
@@ -19,9 +18,7 @@ const mount = (el) => {
     act(() => { ReactDOM.render(el, c); });
     return c;
 };
-const mountMenu = () => mount(
-    <MemoryRouter><MenuBar isActive={true} onToggle={() => {}} currentHref="/portfolio" currentLabel="Home" /></MemoryRouter>
-);
+const mountMenu = () => mount(<ThemeToggle />);
 
 describe("ThemeToggle", () => {
     afterEach(() => {
@@ -62,21 +59,34 @@ describe("ThemeToggle", () => {
     });
 });
 
+const html_has_preconnect = () => {
+    const html = read("public/index.html");
+    return /rel="preconnect" href="https:\/\/fonts\.googleapis\.com"/.test(html) && /rel="preconnect" href="https:\/\/fonts\.gstatic\.com"/.test(html);
+};
+
 describe("static theme checks", () => {
+    test("font tokens: Fraunces head, DM Sans body, DM Mono data", () => {
+        expect(theme).toMatch(/--font-head:\s*"Fraunces"/);
+        expect(theme).toMatch(/--font-body:\s*"DM Sans"/);
+        expect(theme).toMatch(/--font-data:\s*"DM Mono"/);
+        expect(theme).not.toMatch(/Inter|IBM Plex/);
+    });
+
     test("tokens defined for light (default) and dark", () => {
         expect(theme).toMatch(/:root,\s*:root\[data-theme="light"\]\s*\{/);
         expect(theme).toMatch(/:root\[data-theme="dark"\]\s*\{/);
     });
 
-    test("index.html has one Google Fonts stylesheet with display=swap, Inter, IBM Plex Sans", () => {
+    test("index.html has one Google Fonts stylesheet with display=swap, Fraunces, DM Sans, DM Mono", () => {
         const html = read("public/index.html");
         const links = (html.match(/<link[^>]*>/g) || []).filter(
             (l) => /rel="stylesheet"/.test(l) && /fonts\.googleapis\.com/.test(l)
         );
         expect(links).toHaveLength(1);
         expect(links[0]).toContain("display=swap");
-        expect(links[0]).toContain("Inter");
-        expect(links[0]).toContain("IBM+Plex+Sans");
+        ["Fraunces", "DM+Sans", "DM+Mono"].forEach((f) => expect(links[0]).toContain("family=" + f));
+        expect(links[0]).not.toMatch(/Inter|IBM\+Plex/);
+        expect(html_has_preconnect()).toBe(true);
     });
 
     test("DEFAULT_THEME is light", () => {
@@ -91,10 +101,9 @@ describe("static theme checks", () => {
     });
 
     test("no inline style on KPI list or contact tiles", () => {
-        const p = mount(<MemoryRouter><PortfolioPage /></MemoryRouter>);
-        const c = mount(<MemoryRouter><ContactPage /></MemoryRouter>);
+        const p = mount(<MemoryRouter><HomePage /></MemoryRouter>);
         const kpi = p.querySelectorAll(".art-kpi-list, .art-kpi-list *");
-        const tiles = c.querySelectorAll(".contact-tile");
+        const tiles = p.querySelectorAll(".contact-tile");
         expect(p.querySelectorAll(".art-kpi-list").length).toBeGreaterThan(0);
         expect(tiles.length).toBeGreaterThan(0);
         kpi.forEach((n) => expect(n.hasAttribute("style")).toBe(false));

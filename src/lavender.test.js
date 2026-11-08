@@ -79,8 +79,8 @@ describe("lavender palette", () => {
         expect(m[2].toLowerCase()).toBe(dark.page);
     });
 
-    test("MenuBar theme-color values match page tokens", () => {
-        const src = read("src/components/MenuBar.js");
+    test("ThemeToggle theme-color values match page tokens", () => {
+        const src = read("src/components/ThemeToggle.js");
         const m = src.match(/"dark"\s*\?\s*"(#[0-9a-fA-F]{6})"\s*:\s*"(#[0-9a-fA-F]{6})"/);
         expect(m).not.toBeNull();
         expect(m[1].toLowerCase()).toBe(dark.page);
