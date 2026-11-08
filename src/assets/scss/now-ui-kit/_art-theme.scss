@@ -2,18 +2,18 @@
 
 themes
 
-Every themeable color in the site is a CSS variable defined here. Palette: slate + teal.
+Every themeable color in the site is a CSS variable defined here. Palette: lavender.
 Two themes, chosen by the data-theme attribute on <html>:
 
-  light  (default) slate-50 page, white cards, slate-900 text, teal-700 accent
-  dark   slate-900 page, slate-800 cards, slate-100 text, teal-400 accent
+  light  (default) pale lavender page, white cards, deep aubergine text, deep violet accent
+  dark   deep indigo-violet page and cards, pale lavender text, light lavender accent
 
 The attribute is set before first paint by the script in public/index.html, which is
 also where DEFAULT_THEME is chosen. Preview with ?theme=dark or ?theme=light
 (?theme=reset clears the saved choice). The switch button in the menu bar saves the
 choice in localStorage.
 
-Contrast (WCAG AA, checked): see docs/tickets/T-009.md Findings.
+Contrast (WCAG AA, checked): see docs/tickets/T-013.md Findings.
 
 ------------------------------ */
 :root,
@@ -21,108 +21,108 @@ Contrast (WCAG AA, checked): see docs/tickets/T-009.md Findings.
   color-scheme: light;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-head: "IBM Plex Sans", "Inter", system-ui, sans-serif;
-  --bg-deep: #f8fafc;
-  --bg-page: #f8fafc;
-  --bg-panel: #f1f5f9;
-  --bg-panel-2: #e2e8f0;
-  --bg-input: #f1f5f9;
-  --bg-field-a: #f1f5f9;
-  --bg-field-b: #f1f5f9;
+  --bg-deep: #f6f2ff;
+  --bg-page: #f6f2ff;
+  --bg-panel: #ede7fb;
+  --bg-panel-2: #e3d9f7;
+  --bg-input: #ede7fb;
+  --bg-field-a: #ede7fb;
+  --bg-field-b: #ede7fb;
   --bg-card-a: #ffffff;
   --bg-card-b: #ffffff;
-  --rgb-page: 248, 250, 252;
+  --rgb-page: 246, 242, 255;
   --rgb-card-a: 255, 255, 255;
   --rgb-card-b: 255, 255, 255;
   --ov-1: 0.88;
   --ov-2: 0.94;
   --ov-3: 0.99;
-  --ink: #0f172a;
-  --ink-2: #0f172a;
-  --muted: #475569;
-  --muted-2: #475569;
-  --muted-3: #475569;
-  --muted-4: #475569;
-  --divider: #cbd5e1;
-  --accent: #0f766e;
-  --rgb-accent: 15, 118, 110;
-  --accent-text: #0f766e;
-  --accent-h1: #115e59;
-  --accent-h2: #115e59;
-  --accent-h3: #115e59;
-  --ring-track: rgba(15, 118, 110, 0.16);
+  --ink: #1d1033;
+  --ink-2: #1d1033;
+  --muted: #4d3f73;
+  --muted-2: #4d3f73;
+  --muted-3: #4d3f73;
+  --muted-4: #4d3f73;
+  --divider: #cfc2ee;
+  --accent: #5b2fc9;
+  --rgb-accent: 91, 47, 201;
+  --accent-text: #5b2fc9;
+  --accent-h1: #4a22ad;
+  --accent-h2: #4a22ad;
+  --accent-h3: #4a22ad;
+  --ring-track: rgba(91, 47, 201, 0.16);
   --cv-color: var(--accent);
-  --cv-hover: #0f172a;
-  --tile-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 6px 16px rgba(15, 23, 42, 0.06);
-  --card-border: #e2e8f0;
+  --cv-hover: #1d1033;
+  --tile-shadow: 0 1px 3px rgba(29, 16, 51, 0.08), 0 6px 16px rgba(29, 16, 51, 0.06);
+  --card-border: #d9cdf3;
   --on-accent: #ffffff;
-  --code: #0f766e;
-  --lang-bg: #0f766e;
-  --shadow: rgba(15, 23, 42, 0.14);
-  --shadow-soft: rgba(15, 23, 42, 0.1);
-  --shadow-30: rgba(15, 23, 42, 0.1);
-  --shadow-15: rgba(15, 23, 42, 0.1);
-  --shadow-10: rgba(15, 23, 42, 0.06);
+  --code: #5b2fc9;
+  --lang-bg: #5b2fc9;
+  --shadow: rgba(29, 16, 51, 0.14);
+  --shadow-soft: rgba(29, 16, 51, 0.1);
+  --shadow-30: rgba(29, 16, 51, 0.1);
+  --shadow-15: rgba(29, 16, 51, 0.1);
+  --shadow-10: rgba(29, 16, 51, 0.06);
   --thumb-filter: brightness(100%);
-  --bg-grid: #f1f5f9;
+  --bg-grid: #ede7fb;
   --bg-tile: #ffffff;
-  --bg-tile-hover: #f0fdfa;
+  --bg-tile-hover: #f1ebff;
   --bg-tile-rest: #ffffff;
   --bg-details: #ffffff;
-  --bg-placeholder: #e2e8f0;
-  --focus-ring: #0f766e;
+  --bg-placeholder: #e3d9f7;
+  --focus-ring: #5b2fc9;
 }
 
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg-deep: #0b1220;
-  --bg-page: #0f172a;
-  --bg-panel: #1e293b;
-  --bg-panel-2: #334155;
-  --bg-input: #131c31;
-  --bg-field-a: #1e293b;
-  --bg-field-b: #1a2438;
-  --bg-card-a: #1e293b;
-  --bg-card-b: #1a2438;
-  --rgb-page: 15, 23, 42;
-  --rgb-card-a: 30, 41, 59;
-  --rgb-card-b: 26, 36, 56;
+  --bg-deep: #0f0a1e;
+  --bg-page: #140d26;
+  --bg-panel: #1d1436;
+  --bg-panel-2: #2a1d4d;
+  --bg-input: #170f2d;
+  --bg-field-a: #1d1436;
+  --bg-field-b: #1a1230;
+  --bg-card-a: #1d1436;
+  --bg-card-b: #1a1230;
+  --rgb-page: 20, 13, 38;
+  --rgb-card-a: 29, 20, 54;
+  --rgb-card-b: 26, 18, 48;
   --ov-1: 0.93;
   --ov-2: 0.96;
   --ov-3: 0.99;
-  --ink: #f1f5f9;
-  --ink-2: #f8fafc;
-  --muted: #94a3b8;
-  --muted-2: #94a3b8;
-  --muted-3: #94a3b8;
-  --muted-4: #cbd5e1;
-  --divider: #334155;
-  --accent: #14b8a6;
-  --rgb-accent: 20, 184, 166;
-  --accent-text: #2dd4bf;
-  --accent-h1: #5eead4;
-  --accent-h2: #5eead4;
-  --accent-h3: #5eead4;
-  --ring-track: rgba(45, 212, 191, 0.2);
-  --cv-color: #cbd5e1;
-  --cv-hover: #5eead4;
+  --ink: #f1ecff;
+  --ink-2: #f8f5ff;
+  --muted: #b8acdb;
+  --muted-2: #b8acdb;
+  --muted-3: #b8acdb;
+  --muted-4: #d9cfef;
+  --divider: #2a1d4d;
+  --accent: #c9b6ff;
+  --rgb-accent: 201, 182, 255;
+  --accent-text: #c9b6ff;
+  --accent-h1: #ddd0ff;
+  --accent-h2: #ddd0ff;
+  --accent-h3: #ddd0ff;
+  --ring-track: rgba(201, 182, 255, 0.2);
+  --cv-color: #d9cfef;
+  --cv-hover: #ddd0ff;
   --tile-shadow: none;
-  --card-border: #334155;
-  --on-accent: #0f172a;
-  --code: #5eead4;
-  --lang-bg: #0f766e;
+  --card-border: #3a2a66;
+  --on-accent: #140d26;
+  --code: #ddd0ff;
+  --lang-bg: #5b2fc9;
   --shadow: #000000;
   --shadow-soft: rgba(0, 0, 0, 0.4);
   --shadow-30: rgba(0, 0, 0, 0.3);
   --shadow-15: rgba(0, 0, 0, 0.15);
   --shadow-10: rgba(0, 0, 0, 0.1);
   --thumb-filter: brightness(85%);
-  --bg-grid: #1e293b;
-  --bg-tile: #1e293b;
-  --bg-tile-hover: #334155;
-  --bg-tile-rest: #1e293b;
-  --bg-details: #1a2438;
-  --bg-placeholder: #334155;
-  --focus-ring: #2dd4bf;
+  --bg-grid: #1d1436;
+  --bg-tile: #1d1436;
+  --bg-tile-hover: #2a1d4d;
+  --bg-tile-rest: #1d1436;
+  --bg-details: #1a1230;
+  --bg-placeholder: #2a1d4d;
+  --focus-ring: #c9b6ff;
 }
 
 /* ----- shared component classes built on the tokens ----- */

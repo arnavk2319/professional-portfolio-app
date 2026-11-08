@@ -20,14 +20,14 @@
   <head>
     <script>
       // THEME SWITCH. Two themes, defined in src/assets/scss/now-ui-kit/_art-theme.scss:
-      //   "light"  slate + teal (default)
-      //   "dark"   slate + teal, dark
+      //   "light"  lavender (default)
+      //   "dark"   lavender, dark
       // To change the site default, change DEFAULT_THEME. To preview a theme, open any page with
       // ?theme=dark or ?theme=light (kept in localStorage); ?theme=reset clears it. The switch in
       // the menu bar also saves to localStorage. This runs before first paint to avoid a flash.
       (function () {
         var DEFAULT_THEME = "light";
-        var BAR_COLORS = { light: "#f8fafc", dark: "#0f172a" };
+        var BAR_COLORS = { light: "#f6f2ff", dark: "#140d26" };
         var theme = DEFAULT_THEME;
         try {
           var asked = new URLSearchParams(window.location.search).get("theme");
