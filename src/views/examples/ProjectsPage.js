@@ -13,18 +13,12 @@ const PROJECTS = [
     { id: "equoWeb", category: "web", image: require("assets/img/equo-all.webp"), title: "Equo", description: "A brochure website that invites entrepreneurs to join a global venture and get updated about informed investment choices, all suited to each entreprenuer's different profile", href: "https://equoshift.com/" },
     { id: "mealsMobile", category: "mobile", image: require("assets/img/meal-planner.webp"), title: "Meal Planner", description: "A Flutter app that utilizes RESTful APIs and CRUD ops to allow the user to monitor their diets in terms of segregating their food portions into calories, nutrients and portion sizes", href: "https://github.com/arnavk2319/Meals-Flutter-App" },
     { id: "kovaWeb", category: "web", image: require("assets/img/kova-all.webp"), title: "Kova Social and Beauty", description: "A business website that invites and allows users to try beauty products and processes", href: "https://kovasocialbeauty.com/" },
-    { id: "loanDefPred", category: "ml", image: require("assets/img/loan-default-pred.webp"), title: "Loan Default Prediction - LogisticR and RandomF", description: "A data model that is trained on binary classification using Random Forests and Logistic Regression to predict a loan default", href: "https://www.kaggle.com/code/arnavkaushal/loan-default-prediction-logisticr-and-randomf/" },
-    { id: "supervised-learning-comparison", category: "ml", image: require("assets/img/super-learn.webp"), title: "Supervised learning algorithms - Comparison", description: "A comparison of supervised learning algorithms; K-Nearest neightbours(KNN), Support Vector Machines(SVM), Decision Trees, etc", href: "https://www.kaggle.com/code/arnavkaushal/supervised-learning-algorithms-comparison" },
-    { id: "unsupervised-learning-comparison", category: "ml", image: require("assets/img/unsuper-learn.webp"), title: "Unsupervised learning algorithms - Comparison", description: "A comparison of unsupervised learning algorithms; K-Means, Gaussian Mixture Models(GMM), Mean Shift Clustering, DSBScan etc", href: "https://www.kaggle.com/code/arnavkaushal/unsupervised-learning-comparison" },
-    { id: "insurance-prediction-comparison", category: "ml", image: require("assets/img/insurance-pred-img.webp"), title: "Insurance Claim Precition - LogisticR and RandomFor", description: "A data model that is trained on binary classification using Random Forests and Logistic Regression to predict an insurance claim", href: "https://www.kaggle.com/code/arnavkaushal/insurance-claim-prediction-logisticr-and-randfor" },
-    { id: "cali-housing-comparison", category: "ml", image: require("assets/img/cali-housing-img.webp"), title: "California Housing Dataset - EDA, Linear, Ridge, Lasso Regression", description: "A data model that is trained on different kinds of regression like linear, polynomial, ridge, lasso etc and compare each model performance", href: "https://www.kaggle.com/code/arnavkaushal/california-housing-eda-linear-ridge-lasso" }
 ];
 
 const FILTERS = [
     { key: "all", label: "All Categories", heading: "My Projects" },
     { key: "web", label: "Web", heading: "My Web Projects" },
     { key: "mobile", label: "Mobile", heading: "My Mobile Projects" },
-    { key: "ml", label: "ML & Data Science", heading: "My ML & Data Science Projects" },
 ];
 
 // A project card that fades in the first time it scrolls into view.

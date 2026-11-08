@@ -27,7 +27,6 @@ import PortfolioPage from "views/examples/PortfolioPage.js"
 import ProjectsPage from "views/examples/ProjectsPage.js";
 import HistoryPage from "views/examples/HistoryPage.js";
 import ContactPage from "views/examples/ContactPage.js";
-import CertificationsPage from "views/examples/CertificationsPage.js";
 import PageTracker from "PageTracker.js";
 
 ReactDOM.render(
@@ -36,6 +35,7 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Redirect from="/index" to="/portfolio" />
+        <Redirect from="/certifications" to="/portfolio" />
         <Route
           path="/portfolio"
           render={(props) => <PortfolioPage {...props} />}
@@ -43,10 +43,6 @@ ReactDOM.render(
         <Route
           path="/projects"
           render={(props) => <ProjectsPage {...props} />}
-        />
-        <Route
-          path="/certifications"
-          render={(props) => <CertificationsPage {...props} />}
         />
         <Route
           path="/history"

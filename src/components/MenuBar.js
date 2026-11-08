@@ -3,7 +3,6 @@ import React from "react";
 const MENU = [
     { href: "/portfolio", label: "Home" },
     { href: "/projects", label: "Portfolio" },
-    { href: "/certifications", label: "Certifications" },
     { href: "/history", label: "History" },
     { href: "/contact-me", label: "Contact" },
 ];

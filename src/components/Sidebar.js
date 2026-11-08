@@ -1,5 +1,4 @@
 import React from "react";
-import Resume from "assets/img/Arnav_Kaushal_2025_ML.pdf";
 
 const ACCENT = "var(--accent)";
 
@@ -169,10 +168,6 @@ export const Sidebar = ({ isActive, onToggle }) => {
                 </ul>
 
                 <div className="art-ls-divider4"></div>
-
-                <div className="art-links-frame p-15-15">
-                    <a href={Resume} target="_blank" rel="noopener noreferrer" className="art-link" download>Download cv <i className="fas fa-download"></i></a>
-                </div>
 
                 <div className={moreBelow ? "art-scroll-hint art-show" : "art-scroll-hint"} aria-hidden="true">
                     <span>Scroll</span>
