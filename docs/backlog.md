@@ -7,7 +7,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 
 | Phase | Name | Tickets | Status |
 | ----- | ---- | ------- | ------ |
-| P1 | Foundation (data, branding, removals) | T-001..T-004 | approved |
+| P1 | Foundation (data, branding, removals) | T-001..T-004 | done |
 | P2 | Content pages | T-005..T-008 | approved |
 | P3 | Theme, a11y, responsive, perf | T-009..T-011 | approved |
 | P4 | Final fidelity check | T-012 | approved |
@@ -18,8 +18,8 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | ------ | ----- | ----- | ---- | ---------- | ------ |
 | T-001 | P1 | Data modules from resume | M | - | done |
 | T-002 | P1 | Remove Arnav-only features and routes | M | - | done |
-| T-003 | P1 | Config and branding swap (needs_architect) | M | - | approved |
-| T-004 | P1 | Analytics from env, guarded | S | - | approved |
+| T-003 | P1 | Config and branding swap (needs_architect) | M | - | done |
+| T-004 | P1 | Analytics from env, guarded | S | - | done |
 | T-005 | P2 | Home: summary, KPI tiles, resume download | M | T-001, T-002, T-003 | approved |
 | T-006 | P2 | History: experience, education, skills | M | T-001, T-002 | approved |
 | T-007 | P2 | Projects page | S | T-001, T-002 | approved |
