@@ -47,9 +47,7 @@ const KNOWLEDGE = [
 ];
 
 const SOCIAL = [
-    { href: "https://www.linkedin.com/in/arnav-k-7359b3170/", icon: "fab fa-linkedin-in" },
-    { href: "https://github.com/arnavk2319?tab=repositories", icon: "fab fa-github" },
-    { href: "mailto:arnav.kaushal800@gmail.com", icon: "fa fa-envelope" },
+    { href: "mailto:sakshi1999lohia@gmail.com", icon: "fa fa-envelope" },
 ];
 
 const CIRCLE_PATH = "M 50,50 m 0,-46.5 a 46.5,46.5 0 1 1 0,93 a 46.5,46.5 0 1 1 0,-93";
@@ -96,19 +94,24 @@ export const Sidebar = ({ isActive, onToggle }) => {
                 </a>
             </div>
 
-            <a href="/portfolio" className="art-header" aria-label="Arnav Kaushal, home">
+            <a href="/portfolio" className="art-header" aria-label="Sakshi, home">
                 <div className="art-avatar">
-                    <div style={{ backgroundImage: "url(" + require("assets/img/default-avatar.png") + ")" }} className="art-avatar-curtain">
-                        <img style={{ backgroundImage: "url(" + require("assets/img/default-avatar.png") + ")" }} alt="" />
+                    <div
+                        className="art-avatar-curtain"
+                        role="img"
+                        aria-label="Sakshi initials"
+                        style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: "3rem", fontWeight: 700, color: "var(--accent)" }}
+                    >
+                        S
                     </div>
                 </div>
 
                 <h5 className="art-name mb-10">
-                    <span>Arnav Kaushal</span>
+                    <span>Sakshi</span>
                 </h5>
 
                 <div className="art-sm-text">
-                    AI Engineer, Full Stack Software Engineer
+                    Data Analyst
                     <br></br>
                 </div>
             </a>

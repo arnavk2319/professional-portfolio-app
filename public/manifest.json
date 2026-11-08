@@ -1,6 +1,6 @@
 {
-  "short_name": "Arnav Kaushal",
-  "name": "Arnav Kaushal | Portfolio",
+  "short_name": "Sakshi",
+  "name": "Sakshi | Data Analyst Portfolio",
   "icons": [
     {
       "src": "favicon.png",
@@ -10,7 +10,7 @@
     {
       "src": "apple-icon.png",
       "type": "image/png",
-      "sizes": "76x76"
+      "sizes": "180x180"
     }
   ],
   "start_url": ".",

@@ -5,7 +5,7 @@ function HistoryPage(){
 
 
     return(
-        <PageLayout title="History | Arnav Kaushal" currentHref="/history" currentLabel="History">
+        <PageLayout title="History | Sakshi" currentHref="/history" currentLabel="History">
                     {/*Container fluid section -- 1*/}
                     <div className="container-fluid">
 

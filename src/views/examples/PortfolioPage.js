@@ -30,7 +30,7 @@ function PortfolioPage(){
 
 
     return(
-        <PageLayout title="Home | Arnav Kaushal" currentHref="/portfolio" currentLabel="Home">
+        <PageLayout title="Home | Sakshi" currentHref="/portfolio" currentLabel="Home">
                     {/*Container fluid section -- 1*/}
                     <div  className="container-fluid">
 
