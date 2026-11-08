@@ -1,0 +1,18 @@
+{
+  "project": "Professional Portfolio",
+  "integration_branch": "revamp",
+  "prod_branch": "master",
+  "verify": "CI=true npm test --silent --if-present -- --watchAll=false && npm run -s build",
+  "format_file": "",
+  "lint_file": "",
+  "code_extensions": [
+    "js",
+    "jsx",
+    "ts",
+    "tsx",
+    "css",
+    "scss"
+  ],
+  "protected_paths": [],
+  "e2e": ""
+}
