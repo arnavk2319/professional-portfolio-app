@@ -8,7 +8,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | Phase | Name | Tickets | Status |
 | ----- | ---- | ------- | ------ |
 | P1 | Foundation (data, branding, removals) | T-001..T-004 | done |
-| P2 | Content pages | T-005..T-008 | approved |
+| P2 | Content pages | T-005..T-008 | done |
 | P3 | Theme, a11y, responsive, perf | T-009..T-011 | approved |
 | P4 | Final fidelity check | T-012 | approved |
 
@@ -22,8 +22,8 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | T-004 | P1 | Analytics from env, guarded | S | - | done |
 | T-005 | P2 | Home: summary, KPI tiles, resume download | M | T-001, T-002, T-003 | done |
 | T-006 | P2 | History: experience, education, skills | M | T-001, T-002 | done |
-| T-007 | P2 | Projects page | S | T-001, T-002 | approved |
-| T-008 | P2 | Contact page, mailto/tiles, resume | M | T-001, T-002 | approved |
+| T-007 | P2 | Projects page | S | T-001, T-002 | done |
+| T-008 | P2 | Contact page, mailto/tiles, resume | M | T-001, T-002 | done |
 | T-009 | P3 | Dashboard theme, light/dark | M | T-005..T-008 | approved |
 | T-010 | P3 | Accessibility and responsive pass | M | T-009 | approved |
 | T-011 | P3 | Performance and asset cleanup | S | T-009 | approved |
