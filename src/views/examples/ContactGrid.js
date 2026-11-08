@@ -2,23 +2,6 @@ import React from "react";
 import { FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import defaultProfile from "data/profile";
 
-const tileStyle = {
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  padding: "16px",
-  borderRadius: "12px",
-  backgroundColor: "var(--bg-tile)",
-  color: "var(--ink)",
-  textDecoration: "none",
-  boxShadow: "0 2px 6px var(--shadow-30)",
-  fontSize: "14px",
-  fontWeight: "500",
-  flex: "1 1 220px",
-  boxSizing: "border-box",
-  wordBreak: "break-word",
-};
-
 // Tiles are built from profile data only. LinkedIn renders only when a URL is set.
 export const ContactGrid = ({ profile = defaultProfile }) => {
   const tiles = [
@@ -31,23 +14,20 @@ export const ContactGrid = ({ profile = defaultProfile }) => {
   }
 
   return (
-    <ul
-      className="contact-grid"
-      style={{ display: "flex", flexWrap: "wrap", gap: "15px", listStyle: "none", margin: "0 0 30px", padding: 0 }}
-    >
+    <ul className="contact-grid">
       {tiles.map(({ key, icon, label, text, href, external }) => (
-        <li key={key} style={{ display: "flex", flex: "1 1 220px" }}>
+        <li key={key}>
           {href ? (
             <a
               href={href}
-              style={tileStyle}
+              className="contact-tile"
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
             >
               {icon}
               <span><strong>{label}:</strong> {text}</span>
             </a>
           ) : (
-            <div style={tileStyle}>
+            <div className="contact-tile">
               {icon}
               <span><strong>{label}:</strong> {text}</span>
             </div>

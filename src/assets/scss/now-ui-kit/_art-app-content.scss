@@ -21,7 +21,6 @@ content
   /* ----- card ----- */
   .art-card {
     background: linear-gradient(159deg, var(--bg-card-a) 0%, var(--bg-card-b) 100%);
-    box-shadow: #1e1e28;
     padding: 30px;
     margin-bottom: 30px;
   
@@ -612,7 +611,6 @@ content
       background: linear-gradient(159deg, var(--bg-card-a) 0%, var(--bg-card-b) 100%);
       padding: 30px;
       margin-bottom: 30px;
-      box-shadow: #1e1e28;
   
       &:after {
         height: 10px;
@@ -857,7 +855,7 @@ content
     transition: 0.3s ease-in-out;
 
     &:hover {
-      color: #fff;
+      color: var(--on-accent);
       background: var(--accent);
       box-shadow: 0 0 0 1px var(--accent) inset;
       text-decoration: none;

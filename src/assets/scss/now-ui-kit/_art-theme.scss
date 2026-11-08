@@ -2,127 +2,230 @@
 
 themes
 
-Every themeable color in the site is a CSS variable defined here. Two themes:
+Every themeable color in the site is a CSS variable defined here. Palette: slate + teal.
+Two themes, chosen by the data-theme attribute on <html>:
 
-  dark   the original dark theme. These are the exact values the site shipped
-         with, kept as the default so nothing here can break without a theme.
-  ivory  Ivory & Oxblood (light).
+  light  (default) slate-50 page, white cards, slate-900 text, teal-700 accent
+  dark   slate-900 page, slate-800 cards, slate-100 text, teal-400 accent
 
-The active theme is the data-theme attribute on <html>. It is set before first
-paint by the small script in public/index.html, which is also where the default
-theme is chosen. To roll the whole site back to the dark theme, change
-DEFAULT_THEME there to "dark". To preview a theme without changing the default,
-open any page with ?theme=dark or ?theme=ivory (use ?theme=reset to clear it).
+The attribute is set before first paint by the script in public/index.html, which is
+also where DEFAULT_THEME is chosen. Preview with ?theme=dark or ?theme=light
+(?theme=reset clears the saved choice). The switch button in the menu bar saves the
+choice in localStorage.
 
-To add or tune a theme, add a block like the ivory one below. Variables a theme
-does not define fall back to the dark values.
+Contrast (WCAG AA, checked): see docs/tickets/T-009.md Findings.
 
 ------------------------------ */
 :root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-head: "IBM Plex Sans", "Inter", system-ui, sans-serif;
+  --bg-deep: #f8fafc;
+  --bg-page: #f8fafc;
+  --bg-panel: #f1f5f9;
+  --bg-panel-2: #e2e8f0;
+  --bg-input: #f1f5f9;
+  --bg-field-a: #f1f5f9;
+  --bg-field-b: #f1f5f9;
+  --bg-card-a: #ffffff;
+  --bg-card-b: #ffffff;
+  --rgb-page: 248, 250, 252;
+  --rgb-card-a: 255, 255, 255;
+  --rgb-card-b: 255, 255, 255;
+  --ov-1: 0.88;
+  --ov-2: 0.94;
+  --ov-3: 0.99;
+  --ink: #0f172a;
+  --ink-2: #0f172a;
+  --muted: #475569;
+  --muted-2: #475569;
+  --muted-3: #475569;
+  --muted-4: #475569;
+  --divider: #cbd5e1;
+  --accent: #0f766e;
+  --rgb-accent: 15, 118, 110;
+  --accent-text: #0f766e;
+  --accent-h1: #115e59;
+  --accent-h2: #115e59;
+  --accent-h3: #115e59;
+  --ring-track: rgba(15, 118, 110, 0.16);
+  --cv-color: var(--accent);
+  --cv-hover: #0f172a;
+  --tile-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 6px 16px rgba(15, 23, 42, 0.06);
+  --card-border: #e2e8f0;
+  --on-accent: #ffffff;
+  --code: #0f766e;
+  --lang-bg: #0f766e;
+  --shadow: rgba(15, 23, 42, 0.14);
+  --shadow-soft: rgba(15, 23, 42, 0.1);
+  --shadow-30: rgba(15, 23, 42, 0.1);
+  --shadow-15: rgba(15, 23, 42, 0.1);
+  --shadow-10: rgba(15, 23, 42, 0.06);
+  --thumb-filter: brightness(100%);
+  --bg-grid: #f1f5f9;
+  --bg-tile: #ffffff;
+  --bg-tile-hover: #f0fdfa;
+  --bg-tile-rest: #ffffff;
+  --bg-details: #ffffff;
+  --bg-placeholder: #e2e8f0;
+  --focus-ring: #0f766e;
+}
+
 :root[data-theme="dark"] {
-  /* page and panel backgrounds */
-  --bg-deep: #191923;
-  --bg-page: #1e1e28;
-  --bg-panel: #24242f;
-  --bg-panel-2: #31313f;
-  --bg-input: #20202a;
-  --bg-field-a: #252532;
-  --bg-field-b: #23232d;
-  --bg-card-a: #2d2d3a;
-  --bg-card-b: #2b2b35;
-  /* the same surfaces as r,g,b triplets, for translucent overlays */
-  --rgb-page: 30, 30, 40;
-  --rgb-card-a: 45, 45, 58;
-  --rgb-card-b: 43, 43, 53;
-  /* opacity of the page-colored wash over the hero photo, top to bottom */
+  color-scheme: dark;
+  --bg-deep: #0b1220;
+  --bg-page: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-panel-2: #334155;
+  --bg-input: #131c31;
+  --bg-field-a: #1e293b;
+  --bg-field-b: #1a2438;
+  --bg-card-a: #1e293b;
+  --bg-card-b: #1a2438;
+  --rgb-page: 15, 23, 42;
+  --rgb-card-a: 30, 41, 59;
+  --rgb-card-b: 26, 36, 56;
   --ov-1: 0.93;
   --ov-2: 0.96;
   --ov-3: 0.99;
-  /* text */
-  --ink: #ffffff;
-  --ink-2: #fafafc;
-  --muted: #8c8c8e;
-  --muted-2: #646466;
-  --muted-3: #5f5f63;
-  --muted-4: #b0b0b0;
-  --divider: #646466;
-  /* accent and its states */
-  --accent: #b3003b;
-  --rgb-accent: 179, 0, 59;
-  --accent-text: #ff6b8f;
-  --accent-h1: #bd1a41;
-  --accent-h2: #b3003c;
-  --accent-h3: rgba(139, 23, 33, 0.933);
-  --ring-track: var(--accent);
-  --cv-color: lightgray;
-  --cv-hover: var(--accent-h3);
+  --ink: #f1f5f9;
+  --ink-2: #f8fafc;
+  --muted: #94a3b8;
+  --muted-2: #94a3b8;
+  --muted-3: #94a3b8;
+  --muted-4: #cbd5e1;
+  --divider: #334155;
+  --accent: #14b8a6;
+  --rgb-accent: 20, 184, 166;
+  --accent-text: #2dd4bf;
+  --accent-h1: #5eead4;
+  --accent-h2: #5eead4;
+  --accent-h3: #5eead4;
+  --ring-track: rgba(45, 212, 191, 0.2);
+  --cv-color: #cbd5e1;
+  --cv-hover: #5eead4;
   --tile-shadow: none;
-  --on-accent: #20202a;
-  --code: #7aa2ff;
-  --lang-bg: rgba(107, 78, 5, 0.685);
-  /* shadows */
+  --card-border: #334155;
+  --on-accent: #0f172a;
+  --code: #5eead4;
+  --lang-bg: #0f766e;
   --shadow: #000000;
-  --shadow-soft: rgb(100, 100, 100);
+  --shadow-soft: rgba(0, 0, 0, 0.4);
   --shadow-30: rgba(0, 0, 0, 0.3);
   --shadow-15: rgba(0, 0, 0, 0.15);
   --shadow-10: rgba(0, 0, 0, 0.1);
-  /* project thumbnails at rest */
   --thumb-filter: brightness(85%);
-  /* components that carry their own colors */
-  --bg-grid: #31313f;
-  --bg-tile: #24242f;
-  --bg-tile-hover: #4a4a6a;
-  --bg-tile-rest: #3a3a52;
-  --bg-details: #2a2a38;
-  --bg-placeholder: #eeeeee;
+  --bg-grid: #1e293b;
+  --bg-tile: #1e293b;
+  --bg-tile-hover: #334155;
+  --bg-tile-rest: #1e293b;
+  --bg-details: #1a2438;
+  --bg-placeholder: #334155;
+  --focus-ring: #2dd4bf;
 }
 
-:root[data-theme="ivory"] {
-  --bg-deep: #f7f1e6;
-  --bg-page: #f7f1e6;
-  --bg-panel: #ece2d0;
-  --bg-panel-2: #e0d4bd;
-  --bg-input: #ece2d0;
-  --bg-field-a: #ece2d0;
-  --bg-field-b: #ece2d0;
-  --bg-card-a: #fffcf5;
-  --bg-card-b: #fffcf5;
-  --rgb-page: 247, 241, 230;
-  --rgb-card-a: 255, 252, 245;
-  --rgb-card-b: 255, 252, 245;
-  --ov-1: 0.86;
-  --ov-2: 0.93;
-  --ov-3: 0.99;
-  --ink: #241418;
-  --ink-2: #241418;
-  --muted: #67554f;
-  --muted-2: #67554f;
-  --muted-3: #67554f;
-  --muted-4: #67554f;
-  --divider: rgba(36, 20, 24, 0.28);
-  --accent: #8c0a2a;
-  --rgb-accent: 140, 10, 42;
-  --accent-text: #8c0a2a;
-  --accent-h1: #6e0720;
-  --accent-h2: #6e0720;
-  --accent-h3: #6e0720;
-  --ring-track: rgba(140, 10, 42, 0.16);
-  --cv-color: var(--accent);
-  --cv-hover: #000;
-  --tile-shadow: 0 6px 18px rgba(36, 20, 24, 0.14), 0 1px 3px rgba(36, 20, 24, 0.1);
-  --on-accent: #fffcf5;
-  --code: #7a0824;
-  --lang-bg: #8c0a2a;
-  --shadow: rgba(36, 20, 24, 0.18);
-  --shadow-soft: rgba(36, 20, 24, 0.12);
-  --shadow-30: rgba(36, 20, 24, 0.1);
-  --shadow-15: rgba(36, 20, 24, 0.12);
-  --shadow-10: rgba(36, 20, 24, 0.08);
-  --thumb-filter: brightness(100%);
-  --bg-grid: #ece2d0;
-  --bg-tile: #fffcf5;
-  --bg-tile-hover: #f1e8d6;
-  --bg-tile-rest: #fffcf5;
-  --bg-details: #fffcf5;
-  --bg-placeholder: #ece2d0;
+/* ----- shared component classes built on the tokens ----- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* KPI tiles (home page) */
+.art-kpi-list {
+  list-style: none;
+  padding-left: 0;
+
+  & .art-counter-frame {
+    flex-direction: column;
+    align-items: flex-start;
+    height: calc(100% - 30px);
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--bg-card-a);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--tile-shadow);
+
+    & .art-counter-box .art-counter {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    & h6 {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+}
+
+/* Contact tiles */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+
+  & > li {
+    display: flex;
+    flex: 1 1 220px;
+  }
+}
+.contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 220px;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--bg-tile);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--tile-shadow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  & svg {
+    color: var(--accent-text);
+    flex: none;
+  }
+}
+a.contact-tile:hover {
+  background-color: var(--bg-tile-hover);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+/* Light/dark switch: fixed bottom-right, always on screen on every route */
+.art-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000000;
+  padding: 8px 14px;
+  box-shadow: 0 2px 8px var(--shadow-30);
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--bg-panel);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
 }
