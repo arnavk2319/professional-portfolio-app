@@ -2,8 +2,7 @@
   "project": "Professional Portfolio",
   "integration_branch": "revamp",
   "prod_branch": "main",
-  "verify": "CI=true npm test --silent --if-present -- --watchAll=false --passWithNoTests && npm run -s build",
-  "format_file": "",
+  "verify": ". \"$HOME/.nvm/nvm.sh\" && nvm use 16 >/dev/null && CI=true npm test --silent --if-present -- --watchAll=false --passWithNoTests && npm run -s build",  "format_file": "",
   "lint_file": "",
   "code_extensions": [
     "js",
