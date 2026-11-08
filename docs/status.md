@@ -1,6 +1,6 @@
 # Status (rolling, max 60 lines; orchestrator rewrites after every stage)
 
-Updated: 2026-11-08 · Mode: autopilot · Phase: ALL DONE, GATE B (human merges revamp -> main)
+Updated: 2026-11-08 · T-013 lavender theme merged into revamp (PR #15); revamp is 2 commits ahead of main (#14, #15)
 
 ## Done
 - 12 of 12 tickets merged into `revamp` (PRs #1 to #12). 120 tests, build green on Node 16.
