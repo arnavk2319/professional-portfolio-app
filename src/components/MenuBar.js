@@ -29,6 +29,9 @@ const MENU = [
 ];
 
 export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
+    <>
+    {/* Outside the sliding panel so it is always on screen and keyboard reachable. */}
+    <ThemeToggle />
     <div className={isActive ? "art-menu-bar art-active" : "art-menu-bar"}>
         <div className="art-menu-bar-frame">
             <div className="art-menu-bar-header">
@@ -50,7 +53,6 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
                     </ul>
                 </nav>
 
-                <ThemeToggle />
 
                 <ul className="art-language-change">
                     <li className="art-active-lang"><a href="#.">EN</a></li>
@@ -58,4 +60,5 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
             </div>
         </div>
     </div>
+    </>
 );
