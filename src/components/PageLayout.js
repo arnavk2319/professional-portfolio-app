@@ -43,12 +43,19 @@ export const PageLayout = ({ title, currentHref, currentLabel, children }) => {
         frame.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
     };
 
+    const skipToMain = (e) => {
+        e.preventDefault();
+        const main = document.getElementById("main-content");
+        if (main) main.focus();
+    };
+
     const contentClass = ["art-content", artActiveMenuBar && "art-active", artActiveInfoBar && "art-dim"]
         .filter(Boolean)
         .join(" ");
 
     return (
         <>
+            <a className="art-skip-link" href="#main-content" onClick={skipToMain}>Skip to main content</a>
             <div className="art-app">
                 <div className="art-mobile-top-bar"></div>
 
@@ -66,13 +73,15 @@ export const PageLayout = ({ title, currentHref, currentLabel, children }) => {
                             <div className="transition-fade" id="swup">
                                 <div id="scrollbar" tabIndex="-1" className="art-scroll-frame" style={{ outline: "none" }}>
                                     <div className="scroll-content" style={{ transform: "translate3d(0px, 0px, 0px)" }}>
-                                        {children}
+                                        <main id="main-content" tabIndex="-1" style={{ outline: "none" }}>
+                                            {children}
+                                        </main>
 
                                         <div className="container-fluid">
                                             <footer>
                                                 <div>© {new Date().getFullYear()} Sakshi</div>
                                                 <a href="#." className="art-to-top" onClick={scrollToTop} aria-label="Scroll to top">
-                                                    <i className="fas fa-chevron-up"></i> Back to top
+                                                    <i className="fas fa-chevron-up" aria-hidden="true"></i> Back to top
                                                 </a>
                                             </footer>
                                         </div>

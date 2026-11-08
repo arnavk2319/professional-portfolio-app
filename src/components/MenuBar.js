@@ -35,8 +35,8 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
     <div className={isActive ? "art-menu-bar art-active" : "art-menu-bar"}>
         <div className="art-menu-bar-frame">
             <div className="art-menu-bar-header">
-                <a className={isActive ? "art-menu-bar-btn art-active" : "art-menu-bar-btn"} href="#." onClick={onToggle}>
-                    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<i className="fas fa-bars"></i>
+                <a className={isActive ? "art-menu-bar-btn art-active" : "art-menu-bar-btn"} href="#." onClick={onToggle} role="button" aria-expanded={!!isActive} aria-label="Toggle menu">
+                    &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<i className="fas fa-bars" aria-hidden="true"></i>
                 </a>
             </div>
 
@@ -45,10 +45,10 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
             </div>
 
             <div className="art-scroll-frame-menu-sidebar">
-                <nav id="swupMenu">
+                <nav id="swupMenu" aria-label="Main">
                     <ul className="main-menu">
                         {MENU.map(({ href, label }) => (
-                            <li className="menu-item" key={href}><a href={href}>{label}</a></li>
+                            <li className="menu-item" key={href}><a href={href} {...(href === currentHref ? { "aria-current": "page" } : {})}>{label}</a></li>
                         ))}
                     </ul>
                 </nav>

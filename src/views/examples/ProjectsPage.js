@@ -8,14 +8,14 @@ function ProjectsPage() {
             <div className="container-fluid">
                 <div className="row p-60-0 p-lg-30-0 p-md-15-0">
                     <div className="col-lg-12">
-                        <h2 className="art-projects-title">Projects</h2>
+                        <h1 className="art-projects-title">Projects</h1>
                     </div>
 
                     <div className="art-grid art-grid-2-col art-gallery">
                         {projects.map((p) => (
                             <div className="art-grid-item" key={p.name}>
                                 <article className="art-item-description">
-                                    <h3 className="h5 mb-15">{p.name}</h3>
+                                    <h2 className="h5 mb-15">{p.name}</h2>
                                     <div className="art-el-suptitle mb-15">{p.role}</div>
                                     <ul>
                                         {p.bullets.map((b) => (

@@ -229,3 +229,80 @@ a.contact-tile:hover {
     color: var(--accent-text);
   }
 }
+
+/* ----- accessibility helpers ----- */
+.art-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.art-skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000001;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  transform: translateY(-200%);
+
+  &:focus,
+  &:focus-visible {
+    transform: none;
+    color: var(--on-accent);
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+}
+main:focus { outline: none; }
+
+/* sidebar sub-labels that used to be headings */
+.art-table-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.art-kpi-list .art-counter-frame .art-kpi-label {
+  display: block;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.art-info-bar .art-name {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Menu items of a collapsed (off-screen) panel must not be reachable by keyboard.
+   visibility flips after the slide transition when closing, immediately when opening. */
+.art-menu-bar .art-scroll-frame-menu-sidebar {
+  visibility: hidden;
+  transition: visibility 0s linear 0.55s;
+}
+.art-menu-bar.art-active .art-scroll-frame-menu-sidebar {
+  visibility: visible;
+  transition-delay: 0s;
+}
+@media (max-width: 920px) {
+  .art-info-bar:not(.art-active) .art-header,
+  .art-info-bar:not(.art-active) .art-scroll-frame-profile-sidebar,
+  .art-info-bar:not(.art-active) .art-ls-social {
+    visibility: hidden;
+    transition: visibility 0s linear 0.55s;
+  }
+}
+
+/* keep the fixed theme toggle from covering the footer / last content */
+.art-scroll-frame .scroll-content {
+  padding-bottom: 72px !important;
+}
