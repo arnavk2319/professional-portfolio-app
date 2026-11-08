@@ -27,12 +27,12 @@ describe("ThemeToggle", () => {
         document.body.innerHTML = "";
     });
 
-    test("renders button with aria-pressed and text label", () => {
+    test("renders button with aria-pressed and a fixed text label", () => {
         const c = mountMenu();
         const b = c.querySelector("button.art-theme-toggle");
         expect(b).not.toBeNull();
         expect(b.getAttribute("aria-pressed")).toBe("false");
-        expect(b.textContent.trim().length).toBeGreaterThan(0);
+        expect(b.textContent.trim()).toBe("Dark theme");
     });
 
     test("click flips data-theme and persists in localStorage", () => {
@@ -42,6 +42,7 @@ describe("ThemeToggle", () => {
         act(() => { b.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
         expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
         expect(b.getAttribute("aria-pressed")).toBe("true");
+        expect(b.textContent.trim()).toBe("Dark theme");
         expect(set).toHaveBeenCalledWith("theme", "dark");
         act(() => { b.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
         expect(document.documentElement.getAttribute("data-theme")).toBe("light");

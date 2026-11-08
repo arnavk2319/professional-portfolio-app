@@ -17,7 +17,7 @@ export const ThemeToggle = () => {
     return (
         <button type="button" className="art-theme-toggle" onClick={toggle} aria-pressed={theme === "dark"}>
             <i className={theme === "dark" ? "fas fa-sun" : "fas fa-moon"} aria-hidden="true"></i>
-            <span>{theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}</span>
+            <span className="art-theme-toggle-label">Dark theme</span>
         </button>
     );
 };

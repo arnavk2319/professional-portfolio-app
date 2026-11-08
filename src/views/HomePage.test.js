@@ -98,6 +98,10 @@ describe("contact", () => {
         expect(li.getAttribute("href")).toBe("https://www.linkedin.com/in/sakshi-sakshi-32b510215/");
         expect(li.getAttribute("rel")).toBe("noopener noreferrer");
         expect(li.getAttribute("target")).toBe("_blank");
+        expect(li.textContent).toContain("LinkedIn:");
+        expect(li.textContent).toContain("sakshi-sakshi-32b510215");
+        expect(li.textContent).not.toContain("LinkedIn profile");
+        expect(s.querySelectorAll(".contact-tile")).toHaveLength(4);
         expect(s.querySelector("form")).toBeNull();
     });
     test("LinkedIn shows a muted placeholder, not a link, when no URL is set", () => {

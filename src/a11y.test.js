@@ -99,6 +99,15 @@ describe.each(pages)("%s accessibility", (name, url) => {
 });
 
 describe("home page structure", () => {
+    test("theme toggle has a fixed name and aria-pressed, 44px phone target in css", () => {
+        const c = render("/");
+        const b = c.querySelector("button.art-theme-toggle");
+        expect(b.textContent.trim()).toBe("Dark theme");
+        expect(b.hasAttribute("aria-pressed")).toBe(true);
+        const css = fs.readFileSync(path.resolve(__dirname, "assets/scss/now-ui-kit/_art-theme.scss"), "utf8");
+        expect(css).toMatch(/max-width: 760px\)\s*\{\s*\.art-theme-toggle\s*\{[^}]*width: 44px/);
+        expect(css).toMatch(/min-height: 44px/);
+    });
     test("KPI labels are not headings", () => {
         const c = render("/");
         const kpi = c.querySelectorAll('[class*="kpi"]');

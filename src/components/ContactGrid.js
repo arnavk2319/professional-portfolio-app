@@ -10,7 +10,7 @@ export const ContactGrid = ({ profile = defaultProfile }) => {
     { key: "location", icon: <FaMapMarkerAlt size={20} aria-hidden="true" />, label: "Location", text: profile.location },
   ];
   if (profile.linkedin) {
-    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", text: "LinkedIn profile", href: profile.linkedin, external: true });
+    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", text: profile.linkedin.replace(/\/+$/, "").split("/").pop(), href: profile.linkedin, external: true });
   } else {
     tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", placeholder: "Add link" });
   }

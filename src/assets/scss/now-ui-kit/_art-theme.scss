@@ -135,8 +135,8 @@ button:focus-visible {
 
 /* Contact tiles */
 .contact-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 15px;
   list-style: none;
   margin: 0 0 30px;
@@ -144,8 +144,10 @@ button:focus-visible {
 
   & > li {
     display: flex;
-    flex: 1 1 220px;
   }
+}
+@media (max-width: 520px) {
+  .contact-grid { grid-template-columns: minmax(0, 1fr); }
 }
 .contact-tile {
   display: flex;
@@ -194,10 +196,31 @@ a.contact-tile:hover {
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
+  min-height: 44px;
 
   &:hover {
     border-color: var(--accent);
     color: var(--accent-text);
+  }
+}
+/* phones: icon-only pill, 44x44 target; the text stays for screen readers */
+@media (max-width: 760px) {
+  .art-theme-toggle {
+    justify-content: center;
+    width: 44px;
+    padding: 0;
+    right: 12px;
+    bottom: 12px;
+    font-size: 16px;
+  }
+  .art-theme-toggle .art-theme-toggle-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
 }
 

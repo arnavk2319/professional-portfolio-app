@@ -99,7 +99,7 @@ a:hover { color: var(--cv-hover); }
   list-style: none;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 
   & li {
@@ -176,5 +176,6 @@ a:hover { color: var(--cv-hover); }
   }
   .ed-section { scroll-margin-top: 64px; }
   .ed-main { gap: 48px; }
+  .art-kpi-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ed-role { grid-template-columns: minmax(0, 1fr); }
 }
