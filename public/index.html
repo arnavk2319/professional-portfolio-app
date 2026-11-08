@@ -1,0 +1,98 @@
+<!--
+
+=========================================================
+* Now UI Kit React - v1.4.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/now-ui-kit-react
+* Copyright 2020 Creative Tim (http://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/now-ui-kit-react/blob/master/LICENSE.md)
+
+* Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      // THEME SWITCH. Two themes, defined in src/assets/scss/now-ui-kit/_art-theme.scss:
+      //   "light"  slate + teal (default)
+      //   "dark"   slate + teal, dark
+      // To change the site default, change DEFAULT_THEME. To preview a theme, open any page with
+      // ?theme=dark or ?theme=light (kept in localStorage); ?theme=reset clears it. The switch in
+      // the menu bar also saves to localStorage. This runs before first paint to avoid a flash.
+      (function () {
+        var DEFAULT_THEME = "light";
+        var BAR_COLORS = { light: "#f8fafc", dark: "#0f172a" };
+        var theme = DEFAULT_THEME;
+        try {
+          var asked = new URLSearchParams(window.location.search).get("theme");
+          if (asked === "reset") localStorage.removeItem("theme");
+          else if (BAR_COLORS[asked]) localStorage.setItem("theme", asked);
+          var kept = localStorage.getItem("theme");
+          if (BAR_COLORS[kept]) theme = kept;
+        } catch (e) {}
+        document.documentElement.setAttribute("data-theme", theme);
+        document.write('<meta name="theme-color" content="' + BAR_COLORS[theme] + '">');
+      })();
+    </script>
+    <!-- Google Analytics is injected at runtime by src/analytics.js when REACT_APP_GA_MEASUREMENT_ID is set -->
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <!--     Fonts and icons     -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    />
+    <meta name="description" content="Sakshi, Data Analyst in Toronto. SQL, Tableau, Power BI and Excel insights for franchise operations, financial services and manufacturing." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sakshi | Data Analyst" />
+    <meta property="og:description" content="Sakshi, Data Analyst in Toronto. SQL, Tableau, Power BI and Excel insights for franchise operations, financial services and manufacturing." />
+    <meta property="og:image" content="%PUBLIC_URL%/apple-icon.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Sakshi | Data Analyst" />
+    <meta name="twitter:description" content="Sakshi, Data Analyst in Toronto. SQL, Tableau, Power BI and Excel insights for franchise operations, financial services and manufacturing." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/apple-icon.png" />
+    <title>Sakshi | Data Analyst</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

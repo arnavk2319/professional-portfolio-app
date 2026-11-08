@@ -1,0 +1,319 @@
+/* ------------------------------
+
+themes
+
+Every themeable color in the site is a CSS variable defined here. Palette: slate + teal.
+Two themes, chosen by the data-theme attribute on <html>:
+
+  light  (default) slate-50 page, white cards, slate-900 text, teal-700 accent
+  dark   slate-900 page, slate-800 cards, slate-100 text, teal-400 accent
+
+The attribute is set before first paint by the script in public/index.html, which is
+also where DEFAULT_THEME is chosen. Preview with ?theme=dark or ?theme=light
+(?theme=reset clears the saved choice). The switch button in the menu bar saves the
+choice in localStorage.
+
+Contrast (WCAG AA, checked): see docs/tickets/T-009.md Findings.
+
+------------------------------ */
+:root,
+:root[data-theme="light"] {
+  color-scheme: light;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-head: "IBM Plex Sans", "Inter", system-ui, sans-serif;
+  --bg-deep: #f8fafc;
+  --bg-page: #f8fafc;
+  --bg-panel: #f1f5f9;
+  --bg-panel-2: #e2e8f0;
+  --bg-input: #f1f5f9;
+  --bg-field-a: #f1f5f9;
+  --bg-field-b: #f1f5f9;
+  --bg-card-a: #ffffff;
+  --bg-card-b: #ffffff;
+  --rgb-page: 248, 250, 252;
+  --rgb-card-a: 255, 255, 255;
+  --rgb-card-b: 255, 255, 255;
+  --ov-1: 0.88;
+  --ov-2: 0.94;
+  --ov-3: 0.99;
+  --ink: #0f172a;
+  --ink-2: #0f172a;
+  --muted: #475569;
+  --muted-2: #475569;
+  --muted-3: #475569;
+  --muted-4: #475569;
+  --divider: #cbd5e1;
+  --accent: #0f766e;
+  --rgb-accent: 15, 118, 110;
+  --accent-text: #0f766e;
+  --accent-h1: #115e59;
+  --accent-h2: #115e59;
+  --accent-h3: #115e59;
+  --ring-track: rgba(15, 118, 110, 0.16);
+  --cv-color: var(--accent);
+  --cv-hover: #0f172a;
+  --tile-shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 6px 16px rgba(15, 23, 42, 0.06);
+  --card-border: #e2e8f0;
+  --on-accent: #ffffff;
+  --code: #0f766e;
+  --lang-bg: #0f766e;
+  --shadow: rgba(15, 23, 42, 0.14);
+  --shadow-soft: rgba(15, 23, 42, 0.1);
+  --shadow-30: rgba(15, 23, 42, 0.1);
+  --shadow-15: rgba(15, 23, 42, 0.1);
+  --shadow-10: rgba(15, 23, 42, 0.06);
+  --thumb-filter: brightness(100%);
+  --bg-grid: #f1f5f9;
+  --bg-tile: #ffffff;
+  --bg-tile-hover: #f0fdfa;
+  --bg-tile-rest: #ffffff;
+  --bg-details: #ffffff;
+  --bg-placeholder: #e2e8f0;
+  --focus-ring: #0f766e;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-deep: #0b1220;
+  --bg-page: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-panel-2: #334155;
+  --bg-input: #131c31;
+  --bg-field-a: #1e293b;
+  --bg-field-b: #1a2438;
+  --bg-card-a: #1e293b;
+  --bg-card-b: #1a2438;
+  --rgb-page: 15, 23, 42;
+  --rgb-card-a: 30, 41, 59;
+  --rgb-card-b: 26, 36, 56;
+  --ov-1: 0.93;
+  --ov-2: 0.96;
+  --ov-3: 0.99;
+  --ink: #f1f5f9;
+  --ink-2: #f8fafc;
+  --muted: #94a3b8;
+  --muted-2: #94a3b8;
+  --muted-3: #94a3b8;
+  --muted-4: #cbd5e1;
+  --divider: #334155;
+  --accent: #14b8a6;
+  --rgb-accent: 20, 184, 166;
+  --accent-text: #2dd4bf;
+  --accent-h1: #5eead4;
+  --accent-h2: #5eead4;
+  --accent-h3: #5eead4;
+  --ring-track: rgba(45, 212, 191, 0.2);
+  --cv-color: #cbd5e1;
+  --cv-hover: #5eead4;
+  --tile-shadow: none;
+  --card-border: #334155;
+  --on-accent: #0f172a;
+  --code: #5eead4;
+  --lang-bg: #0f766e;
+  --shadow: #000000;
+  --shadow-soft: rgba(0, 0, 0, 0.4);
+  --shadow-30: rgba(0, 0, 0, 0.3);
+  --shadow-15: rgba(0, 0, 0, 0.15);
+  --shadow-10: rgba(0, 0, 0, 0.1);
+  --thumb-filter: brightness(85%);
+  --bg-grid: #1e293b;
+  --bg-tile: #1e293b;
+  --bg-tile-hover: #334155;
+  --bg-tile-rest: #1e293b;
+  --bg-details: #1a2438;
+  --bg-placeholder: #334155;
+  --focus-ring: #2dd4bf;
+}
+
+/* ----- shared component classes built on the tokens ----- */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* KPI tiles (home page) */
+.art-kpi-list {
+  list-style: none;
+  padding-left: 0;
+
+  & .art-counter-frame {
+    flex-direction: column;
+    align-items: flex-start;
+    height: calc(100% - 30px);
+    padding: 18px 20px;
+    border-radius: 12px;
+    background: var(--bg-card-a);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--tile-shadow);
+
+    & .art-counter-box .art-counter {
+      font-family: var(--font-head);
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    & h6 {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  }
+}
+
+/* Contact tiles */
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  margin: 0 0 30px;
+  padding: 0;
+
+  & > li {
+    display: flex;
+    flex: 1 1 220px;
+  }
+}
+.contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 220px;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: var(--bg-tile);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--tile-shadow);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  word-break: break-word;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+
+  & svg {
+    color: var(--accent-text);
+    flex: none;
+  }
+}
+a.contact-tile:hover {
+  background-color: var(--bg-tile-hover);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+/* Light/dark switch: fixed bottom-right, always on screen on every route */
+.art-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000000;
+  padding: 8px 14px;
+  box-shadow: 0 2px 8px var(--shadow-30);
+  border-radius: 999px;
+  border: 1px solid var(--divider);
+  background: var(--bg-panel);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent-text);
+  }
+}
+
+/* ----- accessibility helpers ----- */
+.art-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.art-skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000001;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  transform: translateY(-200%);
+
+  &:focus,
+  &:focus-visible {
+    transform: none;
+    color: var(--on-accent);
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+}
+main:focus { outline: none; }
+
+/* sidebar sub-labels that used to be headings */
+.art-table-label {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.art-kpi-list .art-counter-frame .art-kpi-label {
+  display: block;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.art-info-bar .art-name {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Menu items of a collapsed (off-screen) panel must not be reachable by keyboard.
+   visibility flips after the slide transition when closing, immediately when opening. */
+.art-menu-bar .art-scroll-frame-menu-sidebar {
+  visibility: hidden;
+  transition: visibility 0s linear 0.55s;
+}
+.art-menu-bar.art-active .art-scroll-frame-menu-sidebar {
+  visibility: visible;
+  transition-delay: 0s;
+}
+@media (max-width: 920px) {
+  .art-info-bar:not(.art-active) .art-header,
+  .art-info-bar:not(.art-active) .art-scroll-frame-profile-sidebar,
+  .art-info-bar:not(.art-active) .art-ls-social {
+    visibility: hidden;
+    transition: visibility 0s linear 0.55s;
+  }
+}
+
+/* keep the fixed theme toggle from covering the footer / last content */
+.art-scroll-frame .scroll-content {
+  padding-bottom: 72px !important;
+}
+
+/* panel toggles are real <button>s: neutralise native button chrome */
+button.art-info-bar-btn,
+button.art-menu-bar-btn {
+  background: none;
+  border: 0;
+  font: inherit;
+  line-height: inherit;
+  color: var(--accent);
+  cursor: pointer;
+}
