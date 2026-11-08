@@ -10,7 +10,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | P1 | Foundation (data, branding, removals) | T-001..T-004 | done |
 | P2 | Content pages | T-005..T-008 | done |
 | P3 | Theme, a11y, responsive, perf | T-009..T-011 | done |
-| P4 | Final fidelity check | T-012 | approved |
+| P4 | Final fidelity check | T-012 | done |
 
 ## Tickets
 
@@ -27,7 +27,7 @@ Only the human (via Gate A) moves a ticket from draft to approved.
 | T-009 | P3 | Dashboard theme, light/dark | M | T-005..T-008 | done |
 | T-010 | P3 | Accessibility and responsive pass | M | T-009 | done |
 | T-011 | P3 | Performance and asset cleanup | S | T-009 | done |
-| T-012 | P4 | Final fidelity check vs resume | S | T-010, T-011 | approved |
+| T-012 | P4 | Final fidelity check vs resume | S | T-010, T-011 | done |
 
 ## Later (not built)
 - LinkedIn tile activation once the human supplies the URL.
