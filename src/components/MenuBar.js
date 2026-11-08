@@ -35,9 +35,9 @@ export const MenuBar = ({ isActive, onToggle, currentHref, currentLabel }) => (
     <div className={isActive ? "art-menu-bar art-active" : "art-menu-bar"}>
         <div className="art-menu-bar-frame">
             <div className="art-menu-bar-header">
-                <a className={isActive ? "art-menu-bar-btn art-active" : "art-menu-bar-btn"} href="#." onClick={onToggle} role="button" aria-expanded={!!isActive} aria-label="Toggle menu">
+                <button type="button" className={isActive ? "art-menu-bar-btn art-active" : "art-menu-bar-btn"} onClick={onToggle} aria-expanded={!!isActive} aria-label="Toggle menu">
                     &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<i className="fas fa-bars" aria-hidden="true"></i>
-                </a>
+                </button>
             </div>
 
             <div className="art-current-page">

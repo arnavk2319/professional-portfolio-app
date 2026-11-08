@@ -122,11 +122,34 @@ describe("static stylesheet checks", () => {
     test(":focus-visible rule exists", () => {
         expect(all).toMatch(/:focus-visible/);
     });
-    test("collapsed menu uses visibility: hidden", () => {
-        const menu = fs.readFileSync(path.join(dir, "now-ui-kit/_art-menu-bar.scss"), "utf8");
-        expect(menu).toMatch(/visibility:\s*hidden/);
+    test("collapsed menu list is visibility: hidden with a delayed transition (theme file)", () => {
+        const theme = fs.readFileSync(path.join(dir, "now-ui-kit/_art-theme.scss"), "utf8");
+        expect(theme).toMatch(/\.art-menu-bar \.art-scroll-frame-menu-sidebar\s*\{[^}]*visibility:\s*hidden[^}]*transition:\s*visibility 0s linear 0\.55s/);
+        expect(theme).toMatch(/\.art-menu-bar\.art-active \.art-scroll-frame-menu-sidebar\s*\{[^}]*visibility:\s*visible[^}]*transition-delay:\s*0s/);
     });
     test(".art-sr-only is defined", () => {
         expect(all).toMatch(/\.art-sr-only\s*\{/);
+    });
+});
+
+describe("panel toggles", () => {
+    test("are real buttons; click toggles aria-expanded and Space/Enter work natively", () => {
+        const c = render(PortfolioPage, "/portfolio");
+        const menuBtn = c.querySelector("button.art-menu-bar-btn");
+        const infoBtn = c.querySelector("button.art-info-bar-btn");
+        expect(menuBtn).not.toBeNull();
+        expect(infoBtn).not.toBeNull();
+        expect(menuBtn.getAttribute("type")).toBe("button");
+        expect(menuBtn.getAttribute("aria-expanded")).toBe("false");
+        act(() => { menuBtn.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+        expect(menuBtn.getAttribute("aria-expanded")).toBe("true");
+        // opening one panel closes the other
+        act(() => { infoBtn.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
+        expect(infoBtn.getAttribute("aria-expanded")).toBe("true");
+        expect(menuBtn.getAttribute("aria-expanded")).toBe("false");
+    });
+    test("profile toggle sits in a header hidden (display:none) above 920px", () => {
+        const app = fs.readFileSync(path.resolve(__dirname, "assets/scss/now-ui-kit/_art-app.scss"), "utf8");
+        expect(app).toMatch(/art-info-bar-header\s*\{[^}]*display:\s*none/);
     });
 });

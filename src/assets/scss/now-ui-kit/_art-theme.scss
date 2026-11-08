@@ -306,3 +306,14 @@ main:focus { outline: none; }
 .art-scroll-frame .scroll-content {
   padding-bottom: 72px !important;
 }
+
+/* panel toggles are real <button>s: neutralise native button chrome */
+button.art-info-bar-btn,
+button.art-menu-bar-btn {
+  background: none;
+  border: 0;
+  font: inherit;
+  line-height: inherit;
+  color: var(--accent);
+  cursor: pointer;
+}

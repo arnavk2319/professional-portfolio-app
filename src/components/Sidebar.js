@@ -43,9 +43,9 @@ export const Sidebar = ({ isActive, onToggle }) => {
     <header className={isActive ? "art-info-bar art-active" : "art-info-bar"}>
         <div className="art-info-bar-frame">
             <div className="art-info-bar-header">
-                <a className="art-info-bar-btn" onClick={onToggle} href="#." role="button" aria-expanded={!!isActive} aria-label="Toggle profile panel">
+                <button type="button" className="art-info-bar-btn" onClick={onToggle} aria-expanded={!!isActive} aria-label="Toggle profile panel">
                     <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
-                </a>
+                </button>
             </div>
 
             <a href="/portfolio" className="art-header" aria-label={profile.name + ", home"}>
