@@ -17,3 +17,30 @@ describe('static host SPA rewrite', () => {
     expect(read('public/_redirects')).toMatch(/\/\*\s+\/index\.html\s+200/);
   });
 });
+
+// The editorial page needs no rewrite: every section lives in the one document at "/".
+describe('no host rewrite needed', () => {
+  const home = read('src/views/HomePage.js');
+  test('section index uses plain #anchors to ids that exist on the page', () => {
+    const idx = read('src/components/SectionIndex.js');
+    const ids = [...idx.matchAll(/id:\s*"([a-z]+)"/g)].map((m) => m[1]);
+    expect(ids).toEqual(['summary', 'experience', 'projects', 'education', 'skills', 'contact']);
+    expect(idx).toMatch(/href=\{"#" \+ s\.id\}/);
+    ids.forEach((id) => expect(home).toMatch(new RegExp('id="' + id + '"')));
+  });
+  test('no in-page link points at a route path', () => {
+    expect(home).not.toMatch(/href="\/(projects|history|contact-me|portfolio)/);
+  });
+  test('index.html is a plain SPA shell with a root node', () => {
+    expect(read('public/index.html')).toMatch(/<div id="root"><\/div>/);
+  });
+});
+
+describe('production build needs only index.html', () => {
+  const idx = path.resolve(__dirname, '..', 'build/index.html');
+  (fs.existsSync(idx) ? test : test.skip)('build/index.html is a shell with a root node and one main bundle', () => {
+    const html = fs.readFileSync(idx, 'utf8');
+    expect(html).toContain('<div id="root"></div>');
+    expect(html).toMatch(/static\/js\/main\.[a-z0-9]+\.chunk\.js/);
+  });
+});

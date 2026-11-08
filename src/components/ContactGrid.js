@@ -10,12 +10,14 @@ export const ContactGrid = ({ profile = defaultProfile }) => {
     { key: "location", icon: <FaMapMarkerAlt size={20} aria-hidden="true" />, label: "Location", text: profile.location },
   ];
   if (profile.linkedin) {
-    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", text: "LinkedIn profile", href: profile.linkedin, external: true });
+    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", text: profile.linkedin.replace(/\/+$/, "").split("/").pop(), href: profile.linkedin, external: true });
+  } else {
+    tiles.push({ key: "linkedin", icon: <FaLinkedin size={20} aria-hidden="true" />, label: "LinkedIn", placeholder: "Add link" });
   }
 
   return (
     <ul className="contact-grid">
-      {tiles.map(({ key, icon, label, text, href, external }) => (
+      {tiles.map(({ key, icon, label, text, href, external, placeholder }) => (
         <li key={key}>
           {href ? (
             <a
@@ -29,7 +31,7 @@ export const ContactGrid = ({ profile = defaultProfile }) => {
           ) : (
             <div className="contact-tile">
               {icon}
-              <span><strong>{label}:</strong> {text}</span>
+              <span><strong>{label}:</strong> {placeholder ? <span className="ed-placeholder">{placeholder}</span> : text}</span>
             </div>
           )}
         </li>
