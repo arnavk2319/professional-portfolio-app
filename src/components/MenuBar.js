@@ -2,7 +2,7 @@ import React from "react";
 
 const MENU = [
     { href: "/portfolio", label: "Home" },
-    { href: "/projects", label: "Portfolio" },
+    { href: "/projects", label: "Projects" },
     { href: "/history", label: "History" },
     { href: "/contact-me", label: "Contact" },
 ];
