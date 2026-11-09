@@ -20,7 +20,7 @@ describe("section index", () => {
         expect(nav.getAttribute("aria-label")).toBe("Sections");
         const links = [...nav.querySelectorAll("a")];
         expect(links.map((a) => a.getAttribute("href"))).toEqual(SECTIONS.map((s) => "#" + s.id));
-        expect(links.map((a) => a.textContent)).toEqual(["Summary", "Experience", "Projects", "Education", "Skills", "Contact"]);
+        expect(links.map((a) => a.textContent)).toEqual(["Summary", "Experience", "Projects", "Education", "Skills"]);
         expect(nav.querySelectorAll("[aria-current]")).toHaveLength(1);
         expect(links[0].hasAttribute("aria-current")).toBe(true);
     });

@@ -19,25 +19,11 @@
 <html lang="en">
   <head>
     <script>
-      // THEME SWITCH. Two themes, defined in src/assets/scss/now-ui-kit/_art-theme.scss:
-      //   "light"  lavender (default)
-      //   "dark"   lavender, dark
-      // To change the site default, change DEFAULT_THEME. To preview a theme, open any page with
-      // ?theme=dark or ?theme=light (kept in localStorage); ?theme=reset clears it. The fixed
-      // switch button also saves to localStorage. This runs before first paint to avoid a flash.
+      // Single lavender light theme (tokens in src/assets/scss/now-ui-kit/_art-theme.scss).
+      // Set before first paint to avoid a flash.
       (function () {
-        var DEFAULT_THEME = "light";
-        var BAR_COLORS = { light: "#f6f2ff", dark: "#140d26" };
-        var theme = DEFAULT_THEME;
-        try {
-          var asked = new URLSearchParams(window.location.search).get("theme");
-          if (asked === "reset") localStorage.removeItem("theme");
-          else if (BAR_COLORS[asked]) localStorage.setItem("theme", asked);
-          var kept = localStorage.getItem("theme");
-          if (BAR_COLORS[kept]) theme = kept;
-        } catch (e) {}
-        document.documentElement.setAttribute("data-theme", theme);
-        document.write('<meta name="theme-color" content="' + BAR_COLORS[theme] + '">');
+        document.documentElement.setAttribute("data-theme", "light");
+        document.write('<meta name="theme-color" content="#f6f2ff">');
       })();
     </script>
     <!-- Google Analytics is injected at runtime by src/analytics.js when REACT_APP_GA_MEASUREMENT_ID is set -->
@@ -65,10 +51,6 @@
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap"
       rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
     />
     <meta name="description" content="Sakshi, Data Analyst in Toronto. SQL, Tableau, Power BI and Excel insights for franchise operations, financial services and manufacturing." />
     <meta property="og:type" content="website" />

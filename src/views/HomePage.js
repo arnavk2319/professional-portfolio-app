@@ -6,9 +6,8 @@ import projects from "data/projects";
 import education from "data/education";
 import skills from "data/skills";
 import { SectionIndex } from "components/SectionIndex";
-import { ThemeToggle } from "components/ThemeToggle";
 import { HashScroll } from "components/HashScroll";
-import ContactGrid from "components/ContactGrid";
+import { Sidebar } from "components/Sidebar";
 
 const isWebUrl = (u) => /^https?:\/\//i.test(u || "");
 
@@ -40,6 +39,7 @@ export default function HomePage() {
         <>
             <a className="art-skip-link" href="#main-content" onClick={skipToMain}>Skip to main content</a>
             <HashScroll />
+            <Sidebar />
             <div className="ed-page">
                 <header className="ed-header">
                     <span className="ed-tag">{profile.name} · {profile.title} · {profile.location}</span>
@@ -122,17 +122,12 @@ export default function HomePage() {
                         </div>
                     </Section>
 
-                    <Section id="contact" title="Contact">
-                        <ContactGrid profile={profile} />
-                        <a href={profile.resumeUrl} download className="ed-btn">Download resume</a>
-                    </Section>
                 </main>
                 <footer className="ed-footer">
                     <div>© {new Date().getFullYear()} {profile.name}</div>
                     <a href="#summary">Back to top</a>
                 </footer>
             </div>
-            <ThemeToggle />
         </>
     );
 }

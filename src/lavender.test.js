@@ -72,19 +72,10 @@ describe("lavender palette", () => {
         expect(hits).toEqual([]);
     });
 
-    test("index.html BAR_COLORS match page tokens", () => {
-        const m = read("public/index.html").match(/BAR_COLORS\s*=\s*\{\s*light:\s*"(#[0-9a-fA-F]{6})",\s*dark:\s*"(#[0-9a-fA-F]{6})"/);
-        expect(m).not.toBeNull();
-        expect(m[1].toLowerCase()).toBe(light.page);
-        expect(m[2].toLowerCase()).toBe(dark.page);
-    });
-
-    test("ThemeToggle theme-color values match page tokens", () => {
-        const src = read("src/components/ThemeToggle.js");
-        const m = src.match(/"dark"\s*\?\s*"(#[0-9a-fA-F]{6})"\s*:\s*"(#[0-9a-fA-F]{6})"/);
-        expect(m).not.toBeNull();
-        expect(m[1].toLowerCase()).toBe(dark.page);
-        expect(m[2].toLowerCase()).toBe(light.page);
+    test("index.html theme-color matches page token and forces light", () => {
+        const html = read("public/index.html");
+        expect(html).toContain('content="' + light.page + '"');
+        expect(html).toContain('setAttribute("data-theme", "light")');
     });
 
     test("manifest colours equal light page token", () => {
