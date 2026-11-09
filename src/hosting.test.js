@@ -24,9 +24,10 @@ describe('no host rewrite needed', () => {
   test('section index uses plain #anchors to ids that exist on the page', () => {
     const idx = read('src/components/SectionIndex.js');
     const ids = [...idx.matchAll(/id:\s*"([a-z]+)"/g)].map((m) => m[1]);
-    expect(ids).toEqual(['summary', 'experience', 'projects', 'education', 'skills', 'contact']);
+    expect(ids).toEqual(['summary', 'experience', 'projects', 'education', 'skills']);
     expect(idx).toMatch(/href=\{"#" \+ s\.id\}/);
     ids.forEach((id) => expect(home).toMatch(new RegExp('id="' + id + '"')));
+    expect(read('src/components/Sidebar.js')).toMatch(/id="contact"/);
   });
   test('no in-page link points at a route path', () => {
     expect(home).not.toMatch(/href="\/(projects|history|contact-me|portfolio)/);

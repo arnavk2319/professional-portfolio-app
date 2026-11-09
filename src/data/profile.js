@@ -6,6 +6,8 @@ const profile = {
     name: "Sakshi",
     title: "Data Analyst",
     location: "Toronto, ON",
+    // Shown in the sidebar when set (a number or text). Left empty until confirmed.
+    age: "",
     email: "sakshi1999lohia@gmail.com",
     phone: "+1 (437) 673-8835",
     linkedin: LINKEDIN_URL,

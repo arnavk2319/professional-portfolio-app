@@ -4,7 +4,6 @@ import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import fs from "fs";
 import path from "path";
-import { ThemeToggle } from "components/ThemeToggle";
 import HomePage from "views/HomePage";
 
 const root = path.resolve(__dirname, "..");
@@ -18,47 +17,6 @@ const mount = (el) => {
     act(() => { ReactDOM.render(el, c); });
     return c;
 };
-const mountMenu = () => mount(<ThemeToggle />);
-
-describe("ThemeToggle", () => {
-    afterEach(() => {
-        jest.restoreAllMocks();
-        document.documentElement.removeAttribute("data-theme");
-        document.body.innerHTML = "";
-    });
-
-    test("renders button with aria-pressed and a fixed text label", () => {
-        const c = mountMenu();
-        const b = c.querySelector("button.art-theme-toggle");
-        expect(b).not.toBeNull();
-        expect(b.getAttribute("aria-pressed")).toBe("false");
-        expect(b.textContent.trim()).toBe("Dark theme");
-    });
-
-    test("click flips data-theme and persists in localStorage", () => {
-        const set = jest.spyOn(Storage.prototype, "setItem");
-        const c = mountMenu();
-        const b = c.querySelector("button.art-theme-toggle");
-        act(() => { b.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
-        expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
-        expect(b.getAttribute("aria-pressed")).toBe("true");
-        expect(b.textContent.trim()).toBe("Dark theme");
-        expect(set).toHaveBeenCalledWith("theme", "dark");
-        act(() => { b.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
-        expect(document.documentElement.getAttribute("data-theme")).toBe("light");
-        expect(b.getAttribute("aria-pressed")).toBe("false");
-        expect(set).toHaveBeenCalledWith("theme", "light");
-    });
-
-    test("still works when localStorage throws", () => {
-        jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => { throw new Error("denied"); });
-        jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("denied"); });
-        const c = mountMenu();
-        const b = c.querySelector("button.art-theme-toggle");
-        act(() => { b.dispatchEvent(new MouseEvent("click", { bubbles: true })); });
-        expect(document.documentElement.getAttribute("data-theme")).toBe("dark");
-    });
-});
 
 const html_has_preconnect = () => {
     const html = read("public/index.html");
@@ -91,7 +49,7 @@ describe("static theme checks", () => {
     });
 
     test("DEFAULT_THEME is light", () => {
-        expect(read("public/index.html")).toMatch(/var DEFAULT_THEME = "light"/);
+        expect(read("public/index.html")).toMatch(/setAttribute\("data-theme", "light"\)/);
     });
 
     test("no Montserrat/Poppins/Courier references", () => {

@@ -48,7 +48,7 @@ describe.each(pages)("%s accessibility", (name, url) => {
         const levels = hs.map((h) => Number(h.tagName[1]));
         expect(levels[0]).toBe(1);
         expect(hs.filter((h) => h.tagName === "H2").map((h) => h.textContent)).toEqual(
-            ["Experience", "Projects", "Education", "Skills", "Contact"]);
+            ["Experience", "Projects", "Education", "Skills"]);
         for (let i = 1; i < levels.length; i++) {
             expect(levels[i] - levels[i - 1]).toBeLessThanOrEqual(1);
         }
@@ -80,9 +80,8 @@ describe.each(pages)("%s accessibility", (name, url) => {
         });
     });
 
-    test("fa- icons are aria-hidden", () => {
-        const icons = [...c.querySelectorAll("i, span, svg")].filter((e) =>
-            [...e.classList].some((k) => /^fa[a-z]?$|^fa-/.test(k)));
+    test("decorative icons are aria-hidden", () => {
+        const icons = [...c.querySelectorAll("svg")];
         expect(icons.length).toBeGreaterThan(0);
         icons.forEach((i) => expect(i.getAttribute("aria-hidden")).toBe("true"));
     });
@@ -99,15 +98,6 @@ describe.each(pages)("%s accessibility", (name, url) => {
 });
 
 describe("home page structure", () => {
-    test("theme toggle has a fixed name and aria-pressed, 44px phone target in css", () => {
-        const c = render("/");
-        const b = c.querySelector("button.art-theme-toggle");
-        expect(b.textContent.trim()).toBe("Dark theme");
-        expect(b.hasAttribute("aria-pressed")).toBe(true);
-        const css = fs.readFileSync(path.resolve(__dirname, "assets/scss/now-ui-kit/_art-theme.scss"), "utf8");
-        expect(css).toMatch(/max-width: 760px\)\s*\{\s*\.art-theme-toggle\s*\{[^}]*width: 44px/);
-        expect(css).toMatch(/min-height: 44px/);
-    });
     test("KPI labels are not headings", () => {
         const c = render("/");
         const kpi = c.querySelectorAll('[class*="kpi"]');
@@ -117,20 +107,27 @@ describe("home page structure", () => {
             expect(k.querySelector("h1,h2,h3,h4,h5,h6")).toBeNull();
         });
     });
-    test("six sections with stable ids, each labelled by its heading, in order", () => {
+    test("five sections with stable ids, each labelled by its heading, in order", () => {
         const c = render("/");
         const secs = [...c.querySelectorAll("main > section")];
-        expect(secs.map((s) => s.id)).toEqual(["summary", "experience", "projects", "education", "skills", "contact"]);
+        expect(secs.map((s) => s.id)).toEqual(["summary", "experience", "projects", "education", "skills"]);
         secs.forEach((s) => {
             const h = c.querySelector("#" + s.getAttribute("aria-labelledby"));
             expect(h).not.toBeNull();
             expect(h.textContent.trim()).not.toBe("");
         });
     });
-    test("no sidebar or sliding panel remains", () => {
+    test("profile sidebar has a labelled landmark and an accessible 44px phone toggle", () => {
         const c = render("/");
-        expect(c.querySelector(".art-info-bar, .art-menu-bar, button[aria-expanded]")).toBeNull();
+        const aside = c.querySelector("aside#contact");
+        expect(aside.getAttribute("aria-label")).toBe("Profile and contact");
+        const b = c.querySelector("button.ed-sidebar-toggle");
+        expect(b.getAttribute("aria-expanded")).toBe("false");
+        expect(b.textContent.trim()).not.toBe("");
+        const css = fs.readFileSync(path.resolve(__dirname, "assets/scss/now-ui-kit/_editorial.scss"), "utf8");
+        expect(css).toMatch(/\.ed-sidebar-toggle \{[^}]*width: 44px/);
     });
+
 });
 
 describe("static stylesheet checks", () => {

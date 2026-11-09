@@ -178,52 +178,6 @@ a.contact-tile:hover {
   color: var(--ink);
 }
 
-/* Light/dark switch: fixed bottom-right, always on screen on every route */
-.art-theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  z-index: 1000000;
-  padding: 8px 14px;
-  box-shadow: 0 2px 8px var(--shadow-30);
-  border-radius: 999px;
-  border: 1px solid var(--divider);
-  background: var(--bg-panel);
-  color: var(--ink);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  min-height: 44px;
-
-  &:hover {
-    border-color: var(--accent);
-    color: var(--accent-text);
-  }
-}
-/* phones: icon-only pill, 44x44 target; the text stays for screen readers */
-@media (max-width: 760px) {
-  .art-theme-toggle {
-    justify-content: center;
-    width: 44px;
-    padding: 0;
-    right: 12px;
-    bottom: 12px;
-    font-size: 16px;
-  }
-  .art-theme-toggle .art-theme-toggle-label {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-  }
-}
-
 /* ----- accessibility helpers ----- */
 .art-sr-only {
   position: absolute;
