@@ -36,7 +36,7 @@ describe("section index", () => {
             observers.push(this);
         };
         mount();
-        const io = observers[0];
+        const io = observers.find((o) => o.observed.some((e) => e.id === "summary"));
         expect(io.observed.map((e) => e.id)).toEqual(SECTIONS.map((s) => s.id));
         act(() => { io.cb([{ target: document.getElementById("education"), isIntersecting: true }]); });
         const cur = c.querySelectorAll("nav.ed-index [aria-current]");

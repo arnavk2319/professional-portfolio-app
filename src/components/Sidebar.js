@@ -2,7 +2,6 @@ import React from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import profile from "data/profile";
 import ContactGrid from "components/ContactGrid";
-import { Sparkline } from "components/DataViz";
 import photo from "assets/img/profile.jpg";
 
 // Always-visible profile pane on wide screens; a slide-in drawer on phones.
@@ -61,7 +60,6 @@ export const Sidebar = () => {
                     <img className="ed-photo" src={photo} width="160" height="160" alt={"Portrait of " + profile.name} />
                     <p className="ed-profile-name">{profile.name}</p>
                     <p className="ed-profile-title">{profile.title}</p>
-                    <Sparkline />
                     <ul className="ed-facts">
                         <li><span>Location</span> {profile.location}</li>
                         {profile.age ? <li><span>Age</span> {profile.age}</li> : null}

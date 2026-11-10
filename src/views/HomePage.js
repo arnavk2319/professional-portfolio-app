@@ -7,7 +7,7 @@ import education from "data/education";
 import skills from "data/skills";
 import { SectionIndex } from "components/SectionIndex";
 import { Counter } from "components/Counter";
-import { HeroChart } from "components/DataViz";
+import { BackgroundViz, KpiViz } from "components/DataViz";
 import { HashScroll } from "components/HashScroll";
 import { Sidebar } from "components/Sidebar";
 
@@ -41,6 +41,7 @@ export default function HomePage() {
         <>
             <a className="art-skip-link" href="#main-content" onClick={skipToMain}>Skip to main content</a>
             <HashScroll />
+            <BackgroundViz />
             <Sidebar />
             <div className="ed-page">
                 <header className="ed-header">
@@ -52,10 +53,11 @@ export default function HomePage() {
                         <h1 id="summary-title"><Headline /></h1>
                         <p className="ed-lede">{profile.summary}</p>
                         <ul className="art-kpi-list">
-                            {metrics.map(({ value, label }) => (
+                            {metrics.map(({ value, label, viz }) => (
                                 <li key={label}>
                                     <Counter className="art-counter" value={value} />
                                     <span className="art-kpi-label">{label}</span>
+                                    <KpiViz value={value} kind={viz} />
                                 </li>
                             ))}
                         </ul>
@@ -63,7 +65,6 @@ export default function HomePage() {
                             <a href={profile.resumeUrl} download className="ed-btn">Download resume</a>
                             <a href="#contact" className="ed-link">Get in touch</a>
                         </div>
-                        <HeroChart />
                     </section>
 
                     <Section id="experience" title="Experience">

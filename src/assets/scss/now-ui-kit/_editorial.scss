@@ -198,41 +198,71 @@ a:hover { color: var(--cv-hover); }
 .ed-btn-block { display: block; text-align: center; }
 .ed-sidebar-toggle, .ed-sidebar-backdrop { display: none; }
 
-/* decorative data graphics: transform/opacity/stroke only, no layout or scroll effect */
-.ed-viz {
-  margin: 4px 0 0;
-  padding: 14px 16px 10px;
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  background: var(--bg-card-a);
-  box-shadow: var(--tile-shadow);
+/* page background: fixed, 5x2 grid with 7 charts filled (70%), always animating.
+   transform/opacity only, behind all content, never takes pointer events. */
+.ed-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 320px;
+  z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 2vh 1vw;
+  padding: 3vh 1vw;
   pointer-events: none;
-  & svg { display: block; width: 100%; height: 150px; overflow: hidden; }
+  overflow: hidden;
+  opacity: 0.55;
+  contain: strict;
+  user-select: none;
 }
-.viz-grid { stroke: var(--divider); stroke-width: 1; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
-.viz-bar { fill: var(--accent); opacity: 0.22; transform-box: fill-box; transform-origin: bottom; animation: viz-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; animation-delay: calc(var(--i) * 70ms + 200ms); }
-.viz-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; animation: viz-draw 1.8s ease-out 0.5s backwards; }
-.viz-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: viz-pulse 2.4s ease-out 2.3s infinite; }
-.spark-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; animation: viz-draw 1.4s ease-out 0.3s backwards; }
-.spark-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: viz-pulse 2.4s ease-out 1.8s infinite; }
-.ed-spark { width: 120px; height: 28px; margin: 2px 0 4px; overflow: visible; }
-.ed-profile-title::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: middle;
-  animation: viz-blink 2s ease-in-out infinite;
+.bg-slot { min-width: 0; min-height: 0; }
+.bg-cell { width: 100%; height: 100%; & svg { width: 100%; height: 100%; display: block; overflow: visible; } }
+.ed-page { position: relative; z-index: 1; }
+.bg-axis { stroke: var(--accent); stroke-width: 1.2; opacity: 0.22; }
+.bg-bar, .bg-heat, .bg-dot, .bg-pulse, .bg-candle, .bg-spin, .bg-area { transform-box: fill-box; }
+.bg-bar { fill: var(--accent); opacity: 0.2; transform-origin: bottom; animation: bg-grow 7s ease-in-out infinite alternate; }
+.bg-line { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; opacity: 0.38; stroke-dasharray: 1; animation: bg-draw 11s ease-in-out infinite alternate; &.static { animation: none; stroke-dasharray: none; opacity: 0.3; } }
+.bg-pulse { fill: var(--accent); opacity: 0.45; transform-origin: center; animation: bg-ping 4.5s ease-out infinite; }
+.bg-ring { fill: none; stroke: var(--accent); stroke-width: 10; opacity: 0.1; }
+.bg-arc { fill: none; stroke: var(--accent); stroke-width: 10; opacity: 0.3; transform-origin: 100px 70px; transform: rotate(-90deg); &.b { stroke-width: 7; opacity: 0.2; } }
+.bg-spin { transform-origin: 100px 70px; transform-box: view-box; animation: bg-turn 90s linear infinite; }
+.bg-dot { fill: var(--accent); opacity: 0.3; transform-origin: center; animation: bg-float 8s ease-in-out infinite alternate; }
+.bg-area { fill: var(--accent); opacity: 0.14; transform-origin: bottom; animation: bg-grow 10s ease-in-out infinite alternate; }
+.bg-heat { fill: var(--accent); opacity: 0.1; animation: bg-glow 7s ease-in-out infinite alternate; }
+.bg-candle { transform-origin: bottom; animation: bg-grow 8s ease-in-out infinite alternate; }
+.bg-wick { stroke: var(--accent); stroke-width: 1.6; opacity: 0.3; }
+.bg-body { fill: var(--accent); opacity: 0.26; }
+.d0 { animation-delay: 0s; } .d1 { animation-delay: -0.6s; } .d2 { animation-delay: -1.2s; } .d3 { animation-delay: -1.8s; }
+.d4 { animation-delay: -2.4s; } .d5 { animation-delay: -3s; } .d6 { animation-delay: -3.6s; } .d7 { animation-delay: -4.2s; }
+@keyframes bg-grow { from { transform: scaleY(0.6); } to { transform: scaleY(1); } }
+@keyframes bg-draw { from { stroke-dashoffset: 0.85; } to { stroke-dashoffset: 0; } }
+@keyframes bg-ping { 0% { transform: scale(1); opacity: 0.5; } 80%, 100% { transform: scale(3); opacity: 0; } }
+@keyframes bg-turn { to { transform: rotate(360deg); } }
+@keyframes bg-float { from { transform: translateY(3px); opacity: 0.2; } to { transform: translateY(-3px); opacity: 0.38; } }
+@keyframes bg-glow { from { opacity: 0.05; } to { opacity: 0.22; } }
+
+/* KPI tile mini graphics, drawn from each metric's own value */
+.kpi-viz { display: block; margin-top: auto; padding-top: 8px; pointer-events: none; }
+.kv-wide { display: block; width: 100%; height: 30px; }
+.kv-ring { display: block; width: 44px; height: 44px; transform: rotate(-90deg); }
+.kv-track { fill: none; stroke: var(--ring-track); stroke-width: 6; }
+.kv-arc { fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round; transition: stroke-dasharray 1.2s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.kv-dot { fill: var(--ring-track); &.on { fill: var(--accent); } }
+.kv-bar { fill: var(--accent); transform-box: fill-box; transform-origin: bottom; }
+.kv-block { fill: var(--accent); opacity: 0.85; }
+.kpi-viz.pre .kv-arc { stroke-dasharray: 0 100; transition: none; }
+.kpi-viz.pre .kv-dot, .kpi-viz.pre .kv-block { opacity: 0; transition: none; }
+.kpi-viz.pre .kv-bar { transform: scaleY(0); transition: none; }
+.kpi-viz.go .kv-dot, .kpi-viz.go .kv-block { transition: opacity 0.4s ease; }
+.kpi-viz.go .kv-bar { transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
+@for $i from 1 through 30 {
+  .kpi-viz.go .kv-dot:nth-child(#{$i}), .kpi-viz.go .kv-block:nth-child(#{$i}), .kpi-viz.go .kv-bar:nth-child(#{$i}) { transition-delay: #{$i * 35}ms; }
 }
-@keyframes viz-rise { from { transform: scaleY(0); } }
-@keyframes viz-draw { from { stroke-dashoffset: 1; } }
-@keyframes viz-pulse { 0% { transform: scale(1); opacity: 1; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
-@keyframes viz-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 @media (prefers-reduced-motion: reduce) {
-  .viz-bar, .viz-line, .viz-dot, .spark-line, .spark-dot, .ed-profile-title::before { animation: none; }
+  .ed-bg *, .kpi-viz * { animation: none !important; transition: none !important; }
 }
 
 /* narrow screens: index becomes a compact sticky strip, ledger stacks */
@@ -243,6 +273,7 @@ a:hover { color: var(--cv-hover); }
     margin-left: 0;
     padding: 20px 16px 96px;
   }
+  .ed-bg { left: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); }
   .ed-sidebar {
     width: min(320px, 86vw);
     transform: translateX(-100%);
