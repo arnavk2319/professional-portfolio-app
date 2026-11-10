@@ -6,6 +6,8 @@ import projects from "data/projects";
 import education from "data/education";
 import skills from "data/skills";
 import { SectionIndex } from "components/SectionIndex";
+import { Counter } from "components/Counter";
+import { HeroChart } from "components/DataViz";
 import { HashScroll } from "components/HashScroll";
 import { Sidebar } from "components/Sidebar";
 
@@ -52,7 +54,7 @@ export default function HomePage() {
                         <ul className="art-kpi-list">
                             {metrics.map(({ value, label }) => (
                                 <li key={label}>
-                                    <span className="art-counter">{value}</span>
+                                    <Counter className="art-counter" value={value} />
                                     <span className="art-kpi-label">{label}</span>
                                 </li>
                             ))}
@@ -61,6 +63,7 @@ export default function HomePage() {
                             <a href={profile.resumeUrl} download className="ed-btn">Download resume</a>
                             <a href="#contact" className="ed-link">Get in touch</a>
                         </div>
+                        <HeroChart />
                     </section>
 
                     <Section id="experience" title="Experience">

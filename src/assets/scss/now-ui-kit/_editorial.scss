@@ -198,6 +198,43 @@ a:hover { color: var(--cv-hover); }
 .ed-btn-block { display: block; text-align: center; }
 .ed-sidebar-toggle, .ed-sidebar-backdrop { display: none; }
 
+/* decorative data graphics: transform/opacity/stroke only, no layout or scroll effect */
+.ed-viz {
+  margin: 4px 0 0;
+  padding: 14px 16px 10px;
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  background: var(--bg-card-a);
+  box-shadow: var(--tile-shadow);
+  pointer-events: none;
+  & svg { display: block; width: 100%; height: 150px; overflow: hidden; }
+}
+.viz-grid { stroke: var(--divider); stroke-width: 1; stroke-dasharray: 3 5; vector-effect: non-scaling-stroke; }
+.viz-bar { fill: var(--accent); opacity: 0.22; transform-box: fill-box; transform-origin: bottom; animation: viz-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; animation-delay: calc(var(--i) * 70ms + 200ms); }
+.viz-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 1; animation: viz-draw 1.8s ease-out 0.5s backwards; }
+.viz-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: viz-pulse 2.4s ease-out 2.3s infinite; }
+.spark-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; animation: viz-draw 1.4s ease-out 0.3s backwards; }
+.spark-dot { fill: var(--accent); transform-box: fill-box; transform-origin: center; animation: viz-pulse 2.4s ease-out 1.8s infinite; }
+.ed-spark { width: 120px; height: 28px; margin: 2px 0 4px; overflow: visible; }
+.ed-profile-title::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  vertical-align: middle;
+  animation: viz-blink 2s ease-in-out infinite;
+}
+@keyframes viz-rise { from { transform: scaleY(0); } }
+@keyframes viz-draw { from { stroke-dashoffset: 1; } }
+@keyframes viz-pulse { 0% { transform: scale(1); opacity: 1; } 70%, 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes viz-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) {
+  .viz-bar, .viz-line, .viz-dot, .spark-line, .spark-dot, .ed-profile-title::before { animation: none; }
+}
+
 /* narrow screens: index becomes a compact sticky strip, ledger stacks */
 @media (max-width: 760px) {
   .ed-page {
